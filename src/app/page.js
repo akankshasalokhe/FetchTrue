@@ -17,7 +17,7 @@ export default function Home() {
         <DownloadApp />
         <ServicesPage />
         <PartnerDiagram />
-        <Testimonials />
+        {/* <Testimonials /> */}
     </div>
   );
 }
