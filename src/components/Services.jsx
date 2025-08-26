@@ -215,7 +215,7 @@ export default function ServicesPage() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={` px-5 py-3 rounded-full  text-sm font-medium transition-all duration-300 ${
                 activeCategory === category
                   ? 'bg-blue-600 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-blue-100 shadow-md'
