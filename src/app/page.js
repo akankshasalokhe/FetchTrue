@@ -4,7 +4,8 @@ import HeroSection from "@/components/HeroSection";
 import PartnerDiagram from "@/components/Partner";
 import ServicesPage from "@/components/Services";
 import HowItWorks from "@/components/Steps";
-
+import DownloadApp from "@/components/DownloadApp";
+import Testimonials from "@/components/Testimonial";
 
 export default function Home() {
   return (
@@ -13,8 +14,10 @@ export default function Home() {
         <AboutSection />
         <KeyFeatures />
         <HowItWorks />
+        <DownloadApp />
         <ServicesPage />
         <PartnerDiagram />
+        <Testimonials />
     </div>
   );
 }

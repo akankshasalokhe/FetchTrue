@@ -64,7 +64,7 @@ const cardVariants = {
 
 export default function Benefits() {
   return (
-    <section className="relative bg-white text-dark w-full py-20 overflow-hidden">
+    <section id="features" className="relative bg-white text-dark w-full py-20 overflow-hidden">
       {/* Background shapes */}
       <div className="absolute -top-40 -left-32 w-96 h-96 bg-blue-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
       <div className="absolute -bottom-40 -right-32 w-96 h-96 bg-purple-200 rounded-full opacity-30 filter blur-3xl animate-pulse"></div>
