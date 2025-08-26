@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { FaCheckCircle, FaCrown, FaStar, FaRocket, FaArrowRight } from "react-icons/fa";
 
 export default function PartnerDiagram() {
-  const [activeTier, setActiveTier] = useState(1);
+  const [activeTier, setActiveTier] = useState(null);
   const [viewMode, setViewMode] = useState('cards');
   const [isVisible, setIsVisible] = useState(false);
 
