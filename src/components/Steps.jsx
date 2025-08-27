@@ -37,7 +37,7 @@ export default function HowItWorks() {
 
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-start gap-16">
         {/* Steps List */}
-        <div className="flex-1 flex flex-col gap-20 relative">
+        <div className="flex-1 flex flex-col gap-15 relative">
           {/* Vertical Line */}
           <div className="absolute left-5 top-5 w-1 h-full bg-blue-300"></div>
 
@@ -72,15 +72,15 @@ export default function HowItWorks() {
 
         {/* YouTube Video */}
         <motion.div
-          className="flex-1 mt-12 lg:mt-0 md: w-full"
+          className="flex-1  lg:mt-0 md: w-full"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-lg">
+          <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-lg mt-20">
             <iframe
-              className="w-full h-100"
+              className="w-full h-100 "
               src="Sing up Fetch True_v002.mp4"
               title="FetchTrue App Demo"
               frameBorder="0"

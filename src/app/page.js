@@ -6,6 +6,7 @@ import ServicesPage from "@/components/Services";
 import HowItWorks from "@/components/Steps";
 import DownloadApp from "@/components/DownloadApp";
 import Testimonials from "@/components/Testimonial";
+import ContactUs from "@/components/ContactUs";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <ServicesPage />
         <PartnerDiagram />
         <Testimonials />
+        <ContactUs />
     </div>
   );
 }
