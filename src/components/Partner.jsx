@@ -231,7 +231,7 @@ export default function PartnerDiagram() {
         <div className={`flex justify-center items-center mb-12 relative transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 transform -translate-y-1/2 z-0"></div>
           
-          {partners.map((partner, idx) => (
+          {/* {partners.map((partner, idx) => (
             <div key={partner.id} className="relative z-10 flex flex-col items-center mx-4">
               <div 
                 className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl mb-2 bg-gradient-to-br ${partner.color} text-white shadow-lg transform transition-all duration-300 hover:scale-110 cursor-pointer ${activeTier === partner.id ? 'ring-4 ring-white ring-opacity-80 animate-pulse' : ''}`}
@@ -249,7 +249,7 @@ export default function PartnerDiagram() {
                 <FaArrowRight className="hidden md:block mx-2 text-gray-500 absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-8 animate-bounce-x" />
               )}
             </div>
-          ))}
+          ))} */}
         </div>
 
         {/* Horizontal Cards Container */}
