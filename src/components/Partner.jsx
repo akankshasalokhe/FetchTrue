@@ -76,14 +76,14 @@ export default function PartnerDiagram() {
           ]
         }
       ],
-      monthlyEarning: "₹30,000 - ₹50,000",
+      monthlyEarning: "₹4,000/month",
       revenue: "Earn 5% to 15% revenue share",
       teamBuildingIncome: "₹5000 per direct GP, ₹3000 per indirect referral",
       teamRevenueIncome: "Not applicable at this level",
       marketingSupport: "Basic marketing materials and guidance",
       image: <img src="/GP.png" alt="Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaStar className="text-yellow-400" />,
-      color: "from-blue-300 to-blue-500",
+      color: "from-blue-300 to-blue-400",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-400"
     },
@@ -137,7 +137,7 @@ export default function PartnerDiagram() {
           ]
         }
       ],
-      monthlyEarning: "₹50,000 - ₹70,000",
+      monthlyEarning: "₹4,000/month",
       revenue: "Earn 5% to 15% revenue share + 5% to 10% team revenue",
       teamBuildingIncome: "₹5000 per direct GP, ₹3000 per indirect referral",
       teamRevenueIncome: "5% to 10% from team performance",
@@ -198,7 +198,7 @@ export default function PartnerDiagram() {
           ]
         }
       ],
-      monthlyEarning: "₹70,000 - ₹1,00,000+",
+      monthlyEarning: "₹4,000/month",
       revenue: "Earn 5% to 15% revenue share + 5% to 10% team revenue + 3% to 7% secondary team revenue",
       teamBuildingIncome: ["Earn ₹5,000 for every GP you onboard, Get ₹3,000 when your onboarded GP brings another."],
       teamRevenueIncome: "5% to 10% from team performance + 3% to 7% from secondary teams",
@@ -270,15 +270,17 @@ export default function PartnerDiagram() {
                       <div className="text-white text-xl font-bold mb-1 relative z-10">{partner.name}</div>
                       <h4 className="text-green-900 font-semibold">Assured Earnings</h4>
                       <p className="text-green-900 text-sm relative z-10">{partner.earnings}</p>
+                      <h4 className=" text-white text-sm bg-blue-950 p-1">Monthly Fixed Earning: <span className="text-green-600 font-medium">{partner.monthlyEarning}</span> </h4>
+
                   </div>
                 </div>
 
                 <div className="p-5">
                   {/* Monthly Fixed Earning */}
-                  <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                  {/* <div className="mb-4 p-3 bg-gray-50 rounded-lg">
                     <h4 className="font-semibold text-gray-700 mb-1 text-sm">Monthly Fixed Earning:</h4>
                     <p className="text-green-600 font-medium">{partner.monthlyEarning}</p>
-                  </div>
+                  </div> */}
 
                   {/* Promotion Requirements */}
                   <div className="mb-4">
