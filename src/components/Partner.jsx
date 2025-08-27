@@ -210,7 +210,7 @@ export default function PartnerDiagram() {
       ],
       image: <img src="/PGP.png" alt="Premium Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaCrown className="text-yellow-300" />,
-      color: "from-amber-300 to-amber-500",
+      color: "from-amber-100 to-amber-300",
       bgColor: "bg-amber-50",
       borderColor: "border-amber-400"
     },
@@ -229,7 +229,7 @@ export default function PartnerDiagram() {
 
         {/* Progress Path */}
         <div className={`flex justify-center items-center mb-12 relative transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 transform -translate-y-1/2 z-0"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-300 transform -translate-y-1/2 z-0"></div>
           
           {/* {partners.map((partner, idx) => (
             <div key={partner.id} className="relative z-10 flex flex-col items-center mx-4">
