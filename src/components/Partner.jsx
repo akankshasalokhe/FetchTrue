@@ -2,12 +2,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaCheckCircle, FaCrown, FaStar, FaRocket, FaArrowRight } from "react-icons/fa";
+import { FaCheckCircle, FaCrown, FaStar, FaRocket, FaArrowRight, FaCheck, FaTimes } from "react-icons/fa";
 
 export default function PartnerDiagram() {
   const [activeTier, setActiveTier] = useState(null);
   const [viewMode, setViewMode] = useState('cards');
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedAccordions, setExpandedAccordions] = useState({});
+  const [showAllBenefits, setShowAllBenefits] = useState({});
+  const [benefitsModal, setBenefitsModal] = useState(null);
 
   useEffect(() => {
     // Animation on component mount
@@ -17,6 +20,17 @@ export default function PartnerDiagram() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  const toggleAccordion = (tierId, accordionKey) => {
+    setExpandedAccordions(prev => ({
+      ...prev,
+      [tierId]: prev[tierId] === accordionKey ? null : accordionKey
+    }));
+  };
+
+  const toggleShowAllBenefits = (tierId) => {
+    setBenefitsModal(tierId);
+  };
+
   const partners = [
     {
       id: 1,
@@ -24,7 +38,7 @@ export default function PartnerDiagram() {
       level: "Level 1",
       earnings: "₹30,000 - ₹50,000/month",
       requireQue:"How to promoted GP to SGP?",
-      requirements:"Recruit 10 Growth Partner to become a Super Growth Partner (SGP)",
+      requirements:["Recruit 10 Growth Partner to become a Super Growth Partner (SGP)"],
       benefits: [
         "Core partner tools",
         "Standard support",
@@ -32,6 +46,41 @@ export default function PartnerDiagram() {
         "Onboarding Bonus: ₹5000 per direct GP, ₹3000 per indirect referral",
         "Business Onboarding Bonus: Up to ₹10,000 per business/service",
       ],
+      detailedBenefits: [
+        {
+          title: "Assured Earnings Opportunity:",
+          points: [
+            "Earn ₹ 30,000 - ₹ 50,000",
+            "Scalable income - the more leads you convert, the higher your earnings"
+          ]
+        },
+        {
+          title: "Revenue:",
+          points: [
+            "Earn 5% to 15% revenue share on every successful lead conversion"
+          ]
+        },
+        {
+          title: "Team Building Income:",
+          points: [
+            "Earn ₹5,000 for every franchise you successfully on-board",
+            "Earn ₹3,000 when a franchise you on boarded brings in another franchise"
+          ]
+        },
+        {
+          title: "Marketing Support:",
+          points: [
+            "3 - 6 hours response time for quick issue resolution",
+            "Full support system to help you succeed",
+            "Never feel stuck! Get expert guidance whenever you need it"
+          ]
+        }
+      ],
+      monthlyEarning: "₹30,000 - ₹50,000",
+      revenue: "Earn 5% to 15% revenue share",
+      teamBuildingIncome: "₹5000 per direct GP, ₹3000 per indirect referral",
+      teamRevenueIncome: "Not applicable at this level",
+      marketingSupport: "Basic marketing materials and guidance",
       image: <img src="/GP.png" alt="Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaStar className="text-yellow-400" />,
       color: "from-blue-300 to-blue-500",
@@ -44,7 +93,7 @@ export default function PartnerDiagram() {
       level: "Level 2",
       earnings: "₹50,000 - ₹70,000/month",
       requireQue:"How to promoted SGP to PGP?",
-      requirements: "Support 3 (SGPs) in your team to qualify as a Premium Growth Partner (PGP).",
+      requirements: ["Support 3 (SGPs) in your team to qualify as a Premium Growth Partner (PGP)."],
       benefits: [
         "Advanced tools, priority support",
         "Marketing resources",
@@ -56,6 +105,43 @@ export default function PartnerDiagram() {
         "Support within 3-6 hours",
         "5X return guarantee",
       ],
+      detailedBenefits: [
+        {
+          title: "Assured Earnings Opportunity:",
+          points: [
+            "Earn ₹ 50,000 - ₹ 70,000",
+            "Scalable income - the more leads you convert, the higher your earnings"
+          ]
+        },
+        {
+          title: "Revenue:",
+          points: [
+            "Earn 5% to 15% revenue share on every successful lead conversion",
+            "Additional 5% to 10% team revenue share"
+          ]
+        },
+        {
+          title: "Team Building Income:",
+          points: [
+            "Earn ₹5,000 for every franchise you successfully on-board",
+            "Earn ₹3,000 when a franchise you on boarded brings in another franchise"
+          ]
+        },
+        {
+          title: "Marketing Support:",
+          points: [
+            "3 - 6 hours response time for quick issue resolution",
+            "Full support system to help you succeed",
+            "Never feel stuck! Get expert guidance whenever you need it",
+            "Access to pre-designed outreach & promotion tools"
+          ]
+        }
+      ],
+      monthlyEarning: "₹50,000 - ₹70,000",
+      revenue: "Earn 5% to 15% revenue share + 5% to 10% team revenue",
+      teamBuildingIncome: "₹5000 per direct GP, ₹3000 per indirect referral",
+      teamRevenueIncome: "5% to 10% from team performance",
+      marketingSupport: "Advanced marketing resources and tools",
       image: <img src="/SGP.png" alt="Super Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaRocket className="text-orange-400" />,
       color: "from-purple-300 to-purple-500",
@@ -68,7 +154,7 @@ export default function PartnerDiagram() {
       level: "Level 3",
       earnings: "₹70,000 - ₹1,00,000/month",
       requireQue:"How to promoted PGP?",
-      requirements:"You are a Premium Growth Partner (PGP) and eligible for unlimited earnings.",
+      requirements:["You are a Premium Growth Partner (PGP) and eligible for unlimited earnings."],
       benefits: [
         "All SGP benefits + exclusive events, premium resources",
         "Commission: 5% to 15% per successful lead",
@@ -78,6 +164,45 @@ export default function PartnerDiagram() {
         "Business Onboarding Bonus: Up to ₹10,000 per business/service",
         "Access to pre-designed outreach & promotion tools",
       ],
+      detailedBenefits: [
+        {
+          title: "Assured Earnings Opportunity:",
+          points: [
+            "Earn ₹ 70,000 - ₹ 1,00,000+",
+            "Unlimited earning potential based on your performance"
+          ]
+        },
+        {
+          title: "Revenue:",
+          points: [
+            "Earn 5% to 15% revenue share on every successful lead conversion",
+            "Additional 5% to 10% team revenue share",
+            "Extra 3% to 7% from secondary team performance"
+          ]
+        },
+        {
+          title: "Team Building Income:",
+          points: [
+            "Earn ₹5,000 for every franchise you successfully on-board",
+            "Earn ₹3,000 when a franchise you on boarded brings in another franchise"
+          ]
+        },
+        {
+          title: "Marketing Support:",
+          points: [
+            "3 - 6 hours response time for quick issue resolution",
+            "Full support system to help you succeed",
+            "Never feel stuck! Get expert guidance whenever you need it",
+            "Exclusive marketing campaigns for brand visibility & lead generation",
+            "Dedicated Relationship Manager"
+          ]
+        }
+      ],
+      monthlyEarning: "₹70,000 - ₹1,00,000+",
+      revenue: "Earn 5% to 15% revenue share + 5% to 10% team revenue + 3% to 7% secondary team revenue",
+      teamBuildingIncome: ["Earn ₹5,000 for every GP you onboard, Get ₹3,000 when your onboarded GP brings another."],
+      teamRevenueIncome: "5% to 10% from team performance + 3% to 7% from secondary teams",
+      marketingSupport: ["Support within 3-6 hours.,Full support system.,Expert help, anytime you need it."],
       dedicatedSupport: [
         "24-hour response time for issue resolution",
         "Dedicated Relationship Manager",
@@ -143,33 +268,123 @@ export default function PartnerDiagram() {
                   <div>{partner.image}</div>
                   <div className="text-right">
                       <div className="text-white text-xl font-bold mb-1 relative z-10">{partner.name}</div>
-                      <h4 className="text-green-900 ">Assured Earnings</h4>
-                      <p className="text-green-900  text-sm relative z-10">{partner.earnings}</p>
+                      <h4 className="text-green-900 font-semibold">Assured Earnings</h4>
+                      <p className="text-green-900 text-sm relative z-10">{partner.earnings}</p>
                   </div>
-                  {/* <div className="text-white/90 text-sm relative z-10">{partner.level}</div> */}
                 </div>
 
                 <div className="p-5">
-                  {/* Earnings */}
-                  <div className="mb-5 animate-fade-in">
+                  {/* Monthly Fixed Earning */}
+                  <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                    <h4 className="font-semibold text-gray-700 mb-1 text-sm">Monthly Fixed Earning:</h4>
+                    <p className="text-green-600 font-medium">{partner.monthlyEarning}</p>
+                  </div>
+
+                  {/* Promotion Requirements */}
+                  <div className="mb-4">
                     <h3 className="font-semibold text-gray-700 mb-2 text-sm">{partner.requireQue}</h3>
                     <div className="text-gray-600 space-y-1 text-sm">
-                        <h5 className="transition-colors hover:text-blue-600 animate-fade-in">{partner.requirements}</h5>
+                        <p className="transition-colors hover:text-blue-600 animate-fade-in">{partner.requirements}</p>
                     </div>                  
                   </div>
 
-                  {/* Requirements */}
-                  {/* <div className="mb-5">
-                    <h4 className="font-semibold text-gray-700 mb-2 text-sm">Requirements:</h4>
-                    <ul className="text-gray-600 space-y-1 text-sm">
-                      {partner.requirements.map((req, i) => (
-                        <li key={i} className="transition-colors hover:text-blue-600 animate-fade-in" style={{ animationDelay: `${i * 100}ms` }}>• {req}</li>
-                      ))}
-                    </ul>
-                  </div> */}
+                  {/* Accordions */}
+                  <div className="mb-4 space-y-2">
+                    {/* Revenue Accordion */}
+                    <div className="border rounded-lg overflow-hidden">
+                      <button 
+                        className="w-full p-3 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleAccordion(partner.id, 'revenue');
+                        }}
+                      >
+                        <span className="font-medium text-sm">Revenue</span>
+                        <div className="flex items-center">
+                          <FaCheck className="text-green-500 mr-2" />
+                          {expandedAccordions[partner.id] === 'revenue' ? '−' : '+'}
+                        </div>
+                      </button>
+                      {expandedAccordions[partner.id] === 'revenue' && (
+                        <div className="p-3 bg-white text-sm">
+                          <p>{partner.revenue}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Team Building Income Accordion */}
+                    <div className="border rounded-lg overflow-hidden">
+                      <button 
+                        className="w-full p-3 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleAccordion(partner.id, 'teamBuilding');
+                        }}
+                      >
+                        <span className="font-medium text-sm">Team Building Income</span>
+                        <div className="flex items-center">
+                          <FaCheck className="text-green-500 mr-2" />
+                          {expandedAccordions[partner.id] === 'teamBuilding' ? '−' : '+'}
+                        </div>
+                      </button>
+                      {expandedAccordions[partner.id] === 'teamBuilding' && (
+                        <div className="p-3 bg-white text-sm">
+                          <p>{partner.teamBuildingIncome}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Team Revenue Income Accordion */}
+                    <div className="border rounded-lg overflow-hidden">
+                      <button 
+                        className="w-full p-3 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleAccordion(partner.id, 'teamRevenue');
+                        }}
+                      >
+                        <span className="font-medium text-sm">Team Revenue Income</span>
+                        <div className="flex items-center">
+                          {partner.teamRevenueIncome !== "Not applicable at this level" ? (
+                            <FaCheck className="text-green-500 mr-2" />
+                          ) : (
+                            <FaTimes className="text-red-500 mr-2" />
+                          )}
+                          {expandedAccordions[partner.id] === 'teamRevenue' ? '−' : '+'}
+                        </div>
+                      </button>
+                      {expandedAccordions[partner.id] === 'teamRevenue' && (
+                        <div className="p-3 bg-white text-sm">
+                          <p>{partner.teamRevenueIncome}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Marketing Support Accordion */}
+                    <div className="border rounded-lg overflow-hidden">
+                      <button 
+                        className="w-full p-3 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleAccordion(partner.id, 'marketing');
+                        }}
+                      >
+                        <span className="font-medium text-sm">Marketing Support</span>
+                        <div className="flex items-center">
+                          <FaCheck className="text-green-500 mr-2" />
+                          {expandedAccordions[partner.id] === 'marketing' ? '−' : '+'}
+                        </div>
+                      </button>
+                      {expandedAccordions[partner.id] === 'marketing' && (
+                        <div className="p-3 bg-white text-sm">
+                          <p>{partner.marketingSupport}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
 
                   {/* Benefits */}
-                  <div className="mb-5">
+                  {/* <div className="mb-5">
                     <h4 className="font-semibold text-gray-700 mb-2 text-sm">Benefits:</h4>
                     <ul className="space-y-2 text-sm">
                       {partner.benefits.slice(0, 3).map((benefit, i) => (
@@ -184,17 +399,67 @@ export default function PartnerDiagram() {
                         </li>
                       )}
                     </ul>
-                  </div>
+                  </div> */}
 
-                  {/* CTA Button */}
-                  <button className={`w-full py-2.5 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${partner.color} hover:brightness-110 text-white text-sm transform hover:scale-105 animate-bounce-slow`}>
-                    Join as {partner.name.split('(')[1].replace(')', '')}
-                  </button>
+                  {/* Know Benefits Button */}
+                  <div className="flex justify-center">
+                    <button 
+                      className={`py-2 px-4 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${partner.color} hover:brightness-110 text-white text-sm transform hover:scale-105`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleShowAllBenefits(partner.id);
+                      }}
+                    >
+                      Know Benefits
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Benefits Modal */}
+        {benefitsModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
+            <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+              <div className={`p-6 bg-gradient-to-r ${partners[benefitsModal-1].color} text-white`}>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-2xl font-bold">{partners[benefitsModal-1].name}</h3>
+                    <p className="text-white/90">{partners[benefitsModal-1].level}</p>
+                  </div>
+                  <button 
+                    className="text-white text-2xl transform hover:scale-125 transition-transform"
+                    onClick={() => setBenefitsModal(null)}
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-gray-800 mb-6 text-center">Benefits Overview</h4>
+                
+                <div className="space-y-6">
+                  {partners[benefitsModal-1].detailedBenefits.map((benefitGroup, index) => (
+                    <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                      <h5 className="font-semibold text-gray-700 mb-2 text-lg">{benefitGroup.title}</h5>
+                      <ul className="space-y-2 pl-5">
+                        {benefitGroup.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-2 text-gray-600">
+                            <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Expanded View Modal */}
         {activeTier && (
@@ -255,10 +520,6 @@ export default function PartnerDiagram() {
                     </ul>
                   </div>
                 )}
-
-                <button className={`w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r ${partners[activeTier-1].color} hover:brightness-110 transform hover:scale-105 transition-all duration-300 animate-pulse`}>
-                  Join as {partners[activeTier-1].name.split('(')[1].replace(')', '')}
-                </button>
               </div>
             </div>
           </div>
