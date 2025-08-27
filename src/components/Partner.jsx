@@ -253,7 +253,7 @@ export default function PartnerDiagram() {
         </div>
 
         {/* Horizontal Cards Container */}
-        <div id="cards-container" className="flex flex-col md:flex-row gap-6 justify-center">
+        <div id="cards-container" className=" flex flex-col md:flex-col lg:flex-row gap-6 justify-center">
           {partners.map((partner, index) => (
             <div 
               key={partner.id}

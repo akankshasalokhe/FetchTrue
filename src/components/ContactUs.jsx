@@ -1,419 +1,334 @@
-"use client";
+// pages/contact.js
+"use client"
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from 'react';
+import Head from 'next/head';
+import { motion } from 'framer-motion';
+import { FaUser, FaEnvelope, FaPhone, FaCity, FaPaperPlane, FaMapMarkerAlt, FaPhoneAlt, FaEnvelopeOpen } from 'react-icons/fa';
 
-export default function ContactForm() {
+export default function ContactUs() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-    urgency: "normal",
-    contactMethod: "email",
-    agreeToTerms: false
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    city: '',
+    message: ''
   });
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
-  const [touched, setTouched] = useState({});
-
-  // Real-time validation for touched fields
-  useEffect(() => {
-    const newErrors = {};
-    
-    if (touched.firstName && !formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-    
-    if (touched.email) {
-      if (!formData.email) {
-        newErrors.email = "Email is required";
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        newErrors.email = "Enter a valid email address";
-      }
-    }
-    
-    if (touched.phone && formData.phone && !/^[0-9]{10}$/.test(formData.phone)) {
-      newErrors.phone = "Enter a 10-digit phone number";
-    }
-    
-    if (touched.message && !formData.message.trim()) {
-      newErrors.message = "Message cannot be empty";
-    }
-    
-    if (touched.agreeToTerms && !formData.agreeToTerms) {
-      newErrors.agreeToTerms = "You must agree to the terms";
-    }
-    
-    setErrors(newErrors);
-  }, [formData, touched]);
-
-  const handleBlur = (field) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
     }));
-    
-    // Validate field as user types after it's been touched
-    if (touched[name]) {
-      setTouched(prev => ({ ...prev, [name]: true }));
-    }
   };
 
-  const validate = () => {
-    const newErrors = {};
-    const newTouched = {};
-    
-    // Mark all fields as touched to show all errors
-    Object.keys(formData).forEach(key => {
-      newTouched[key] = true;
-    });
-    
-    setTouched(newTouched);
-    
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Enter a valid email address";
-    }
-    if (formData.phone && !/^[0-9]{10}$/.test(formData.phone)) newErrors.phone = "Enter a 10-digit phone number";
-    if (!formData.message.trim()) newErrors.message = "Message cannot be empty";
-    if (!formData.agreeToTerms) newErrors.agreeToTerms = "You must agree to the terms";
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    // Form submission logic would go here
+    console.log('Form submitted:', formData);
+    setIsSubmitted(true);
     
-    if (!validate()) {
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    try {
-      // In a real application, you would send the data to your backend here
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Randomly simulate success or failure for demonstration
-      const isSuccess = Math.random() > 0.3;
-      
-      if (isSuccess) {
-        setSubmitStatus('success');
-        // Reset form on successful submission
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-          urgency: "normal",
-          contactMethod: "email",
-          agreeToTerms: false
-        });
-        setTouched({});
-      } else {
-        throw new Error("Server error");
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        mobile: '',
+        city: '',
+        message: ''
+      });
+    }, 3000);
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
       }
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
-  const resetForm = () => {
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      urgency: "normal",
-      contactMethod: "email",
-      agreeToTerms: false
-    });
-    setErrors({});
-    setTouched({});
-    setSubmitStatus(null);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120
+      }
+    }
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 py-16 px-6 lg:px-20">
-      <div className="max-w-4xl mx-auto">
+    <div id='contact' className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+      <Head>
+        <title>Contact Us | FetchTrue</title>
+        <meta name="description" content="Get in touch with FetchTrue" />
+      </Head>
+
+      <motion.div 
+        className="max-w-6xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        {/* Header Section */}
         <motion.div 
           className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={itemVariants}
         >
-          <h1 className="text-4xl font-bold text-blue-700 mb-4">Get in Touch</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Have questions or want to discuss a project? Fill out the form below and we'll get back to you as soon as possible.
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Have questions or want to learn more about our services? Reach out to our team and we'll get back to you shortly.
           </p>
         </motion.div>
 
-        <AnimatePresence mode="wait">
-          {submitStatus === 'success' ? (
-            <motion.div
-              key="success"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white shadow-xl rounded-2xl p-8 max-w-2xl mx-auto text-center"
-            >
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Message Sent Successfully!</h2>
-              <p className="text-gray-600 mb-6">Thank you for contacting us. We'll get back to you within 24 hours.</p>
-              <button
-                onClick={resetForm}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300"
-              >
-                Send Another Message
-              </button>
-            </motion.div>
-          ) : submitStatus === 'error' ? (
-            <motion.div
-              key="error"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white shadow-xl rounded-2xl p-8 max-w-2xl mx-auto text-center"
-            >
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Something Went Wrong</h2>
-              <p className="text-gray-600 mb-6">Sorry, we encountered an error while sending your message. Please try again.</p>
-              <button
-                onClick={() => setSubmitStatus(null)}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300"
-              >
-                Try Again
-              </button>
-            </motion.div>
-          ) : (
-            <motion.form
-              key="form"
-              onSubmit={handleSubmit}
-              className="bg-white shadow-xl rounded-2xl p-8 grid grid-cols-1 md:grid-cols-2 gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              {/* First Name */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  First Name *
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur('firstName')}
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${errors.firstName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
-                  placeholder="Your first name"
-                />
-                {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
-              </div>
-
-              {/* Last Name */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur('lastName')}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Your last name"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur('email')}
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
-                  placeholder="your.email@example.com"
-                />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur('phone')}
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
-                  placeholder="123-456-7890"
-                />
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-              </div>
-
-              {/* Subject */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Subject
-                </label>
-                <select
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Contact Form */}
+          <motion.div 
+            className="w-full lg:w-2/3"
+            variants={itemVariants}
+          >
+            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Send us a message</h2>
+              
+              {isSubmitted ? (
+                <motion.div 
+                  className="bg-green-50 text-green-700 p-4 rounded-lg mb-6 text-center"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 100 }}
                 >
-                  <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="project">Project Discussion</option>
-                  <option value="support">Technical Support</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              {/* Urgency */}
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Urgency
-                </label>
-                <div className="flex space-x-4">
-                  {['low', 'normal', 'high'].map(level => (
-                    <label key={level} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="urgency"
-                        value={level}
-                        checked={formData.urgency === level}
-                        onChange={handleChange}
-                        className="mr-2"
-                      />
-                      <span className="capitalize">{level}</span>
+                  <div className="flex items-center justify-center">
+                    <FaPaperPlane className="mr-2 text-green-500" />
+                    <span className="font-medium">Thank you for your message! We'll get back to you soon.</span>
+                  </div>
+                </motion.div>
+              ) : null}
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name
                     </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  onBlur={() => handleBlur('message')}
-                  rows="5"
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
-                  placeholder="How can we help you?"
-                ></textarea>
-                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
-              </div>
-
-              {/* Contact Method */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold mb-2 text-gray-700">
-                  Preferred Contact Method
-                </label>
-                <div className="flex space-x-6">
-                  {['email', 'phone'].map(method => (
-                    <label key={method} className="flex items-center">
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FaUser className="h-5 w-5 text-gray-400" />
+                      </div>
                       <input
-                        type="radio"
-                        name="contactMethod"
-                        value={method}
-                        checked={formData.contactMethod === method}
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleChange}
-                        className="mr-2"
+                        required
+                        className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4 transition duration-300 ease-in-out"
+                        placeholder="Your first name"
                       />
-                      <span className="capitalize">{method}</span>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                      Last Name
                     </label>
-                  ))}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FaUser className="h-5 w-5 text-gray-400" />
+                      </div>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4 transition duration-300 ease-in-out"
+                        placeholder="Your last name"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              {/* Terms Agreement */}
-              <div className="md:col-span-2">
-                <label className="flex items-start">
-                  <input
-                    type="checkbox"
-                    name="agreeToTerms"
-                    checked={formData.agreeToTerms}
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FaEnvelope className="h-5 w-5 text-gray-400" />
+                      </div>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4 transition duration-300 ease-in-out"
+                        placeholder="your.email@example.com"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="mobile" className="block text-sm font-medium text-gray-700 mb-2">
+                      Mobile Number
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <FaPhone className="h-5 w-5 text-gray-400" />
+                      </div>
+                      <input
+                        type="tel"
+                        id="mobile"
+                        name="mobile"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        required
+                        className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 py-3 px-4 transition duration-300 ease-in-out"
+                        placeholder="Your mobile number"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+                    City
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaCity className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      required
+                      className="pl-10 w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-3 px-4 transition duration-300 ease-in-out"
+                      placeholder="Your city"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={formData.message}
                     onChange={handleChange}
-                    onBlur={() => handleBlur('agreeToTerms')}
-                    className="mt-1 mr-2"
+                    required
+                    className="w-full rounded-lg border-gray-300 border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 py-3 px-4 transition duration-300 ease-in-out"
+                    placeholder="How can we help you?"
                   />
-                  <span className="text-sm text-gray-700">
-                    I agree to the terms and conditions and privacy policy *
-                  </span>
-                </label>
-                {errors.agreeToTerms && <p className="text-red-500 text-xs mt-1">{errors.agreeToTerms}</p>}
-              </div>
-
-              {/* Submit Button */}
-              <div className="md:col-span-2 text-center pt-4">
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`bg-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:bg-blue-700'}`}
-                  whileHover={isSubmitting ? {} : { scale: 1.05 }}
-                  whileTap={isSubmitting ? {} : { scale: 0.95 }}
+                </div>
+                
+                <div>
+                  <motion.button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <FaPaperPlane className="mr-2" />
+                    Send Message
+                  </motion.button>
+                </div>
+              </form>
+            </div>
+          </motion.div>
+          
+          {/* Contact Information */}
+          <motion.div 
+            className="w-full lg:w-1/3"
+            variants={itemVariants}
+          >
+            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-2xl shadow-xl p-6 md:p-8 h-full">
+              <h2 className="text-2xl font-semibold mb-6">Get in touch</h2>
+              
+              <div className="space-y-6">
+                <motion.div 
+                  className="flex items-start"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Processing...
-                    </span>
-                  ) : (
-                    'Submit Message'
-                  )}
-                </motion.button>
+                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                    <FaMapMarkerAlt className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg mb-1">Address</h3>
+                    <p className="text-indigo-100">Amanora Mall,Hadpasar<br />Pune, Maharashtra 400001</p>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="flex items-start"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                    <FaPhoneAlt className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg mb-1">Phone</h3>
+                    <p className="text-indigo-100">+91 98765 43210<br />+91 81234 56789</p>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="flex items-start"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                    <FaEnvelopeOpen className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-lg mb-1">Email</h3>
+                    <p className="text-indigo-100">info@fetchtrue.com<br />support@fetchtrue.com</p>
+                  </div>
+                </motion.div>
               </div>
-            </motion.form>
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
+              
+              <div className="mt-8 pt-6 border-t border-indigo-400">
+                <h3 className="font-medium text-lg mb-4">Business Hours</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-indigo-100">Monday - Saturday</span>
+                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                  </div>
+                  {/* 
+                   */}
+                  <div className="flex justify-between">
+                    <span className="text-indigo-100">Sunday</span>
+                    <span className="font-medium">Closed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
