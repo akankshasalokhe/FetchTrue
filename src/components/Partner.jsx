@@ -20,10 +20,11 @@ export default function PartnerDiagram() {
   const partners = [
     {
       id: 1,
-      name: "FetchTrue Growth Partner (GP)",
+      name: "Growth Partner (GP)",
       level: "Level 1",
-      earnings: "₹30,000 - ₹50,000",
-      requirements: ["₹99,999 Investment"],
+      earnings: "₹30,000 - ₹50,000/month",
+      requireQue:"How to promoted GP to SGP?",
+      requirements:"Recruit 10 Growth Partner to become a Super Growth Partner (SGP)",
       benefits: [
         "Core partner tools",
         "Standard support",
@@ -31,8 +32,9 @@ export default function PartnerDiagram() {
         "Onboarding Bonus: ₹5000 per direct GP, ₹3000 per indirect referral",
         "Business Onboarding Bonus: Up to ₹10,000 per business/service",
       ],
+      image: <img src="/GP.png" alt="Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaStar className="text-yellow-400" />,
-      color: "from-blue-400 to-blue-600",
+      color: "from-blue-300 to-blue-500",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-400"
     },
@@ -40,8 +42,9 @@ export default function PartnerDiagram() {
       id: 2,
       name: "Super Growth Partner (SGP)",
       level: "Level 2",
-      earnings: "₹50,000 - ₹70,000",
-      requirements: ["Appoint 10 GPs to become SGP"],
+      earnings: "₹50,000 - ₹70,000/month",
+      requireQue:"How to promoted SGP to PGP?",
+      requirements: "Support 3 (SGPs) in your team to qualify as a Premium Growth Partner (PGP).",
       benefits: [
         "Advanced tools, priority support",
         "Marketing resources",
@@ -53,8 +56,9 @@ export default function PartnerDiagram() {
         "Support within 3-6 hours",
         "5X return guarantee",
       ],
+      image: <img src="/SGP.png" alt="Super Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaRocket className="text-orange-400" />,
-      color: "from-purple-500 to-purple-700",
+      color: "from-purple-300 to-purple-500",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-400"
     },
@@ -62,8 +66,9 @@ export default function PartnerDiagram() {
       id: 3,
       name: "Premium Growth Partner (PGP)",
       level: "Level 3",
-      earnings: "₹70,000 - ₹1,00,000",
-      requirements: ["Appoint 10 SGPs to become PGP"],
+      earnings: "₹70,000 - ₹1,00,000/month",
+      requireQue:"How to promoted PGP?",
+      requirements:"You are a Premium Growth Partner (PGP) and eligible for unlimited earnings.",
       benefits: [
         "All SGP benefits + exclusive events, premium resources",
         "Commission: 5% to 15% per successful lead",
@@ -78,8 +83,9 @@ export default function PartnerDiagram() {
         "Dedicated Relationship Manager",
         "Exclusive marketing campaigns for brand visibility & lead generation",
       ],
+      image: <img src="/PGP.png" alt="Premium Growth Partner" className="rounded-full" width={70} height={70} />,
       icon: <FaCrown className="text-yellow-300" />,
-      color: "from-amber-500 to-amber-700",
+      color: "from-amber-300 to-amber-500",
       bgColor: "bg-amber-50",
       borderColor: "border-amber-400"
     },
@@ -110,7 +116,7 @@ export default function PartnerDiagram() {
                   document.getElementById('cards-container')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {partner.icon}
+                {partner.image}
               </div>
               <span className="text-sm font-semibold text-gray-700">{partner.level}</span>
               
@@ -132,28 +138,35 @@ export default function PartnerDiagram() {
             >
               <div className={`h-full bg-white rounded-2xl shadow-lg border-2 ${partner.borderColor} overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl`}>
                 {/* Tier Header with animated gradient */}
-                <div className={`p-5 bg-gradient-to-r ${partner.color} relative overflow-hidden`}>
+                <div className={`flex justify-between p-5 bg-gradient-to-r ${partner.color} relative overflow-hidden`}>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/0 animate-shimmer"></div>
-                  <div className="text-white text-xl font-bold mb-1 relative z-10">{partner.name}</div>
-                  <div className="text-white/90 text-sm relative z-10">{partner.level}</div>
+                  <div>{partner.image}</div>
+                  <div className="text-right">
+                      <div className="text-white text-xl font-bold mb-1 relative z-10">{partner.name}</div>
+                      <h4 className="text-green-900 ">Assured Earnings</h4>
+                      <p className="text-green-900  text-sm relative z-10">{partner.earnings}</p>
+                  </div>
+                  {/* <div className="text-white/90 text-sm relative z-10">{partner.level}</div> */}
                 </div>
 
                 <div className="p-5">
                   {/* Earnings */}
                   <div className="mb-5 animate-fade-in">
-                    <h4 className="font-semibold text-gray-700 mb-2 text-sm">Earnings Potential:</h4>
-                    <p className="text-lg font-bold text-blue-700 animate-pulse">{partner.earnings}</p>
+                    <h3 className="font-semibold text-gray-700 mb-2 text-sm">{partner.requireQue}</h3>
+                    <div className="text-gray-600 space-y-1 text-sm">
+                        <h5 className="transition-colors hover:text-blue-600 animate-fade-in">{partner.requirements}</h5>
+                    </div>                  
                   </div>
 
                   {/* Requirements */}
-                  <div className="mb-5">
+                  {/* <div className="mb-5">
                     <h4 className="font-semibold text-gray-700 mb-2 text-sm">Requirements:</h4>
                     <ul className="text-gray-600 space-y-1 text-sm">
                       {partner.requirements.map((req, i) => (
                         <li key={i} className="transition-colors hover:text-blue-600 animate-fade-in" style={{ animationDelay: `${i * 100}ms` }}>• {req}</li>
                       ))}
                     </ul>
-                  </div>
+                  </div> */}
 
                   {/* Benefits */}
                   <div className="mb-5">

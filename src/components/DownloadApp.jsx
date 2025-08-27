@@ -342,10 +342,10 @@ export default function DownloadBanner() {
             transition={{ delay: 1.7 }}
             className="text-gray-600 mb-3"
           >
-            Trusted by industry leaders
+            Our Service Domain
           </motion.p>
           <div className="flex justify-center items-center gap-6 flex-wrap">
-            {["TechCorp", "GlobalBiz", "EnterpriseX", "BusinessPlus"].map((company, index) => (
+            {["Franchise", "Business", "Marketing", "Legal","Finance","IT","Education","On-Demand","Onboarding"].map((company, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0 }}
