@@ -94,13 +94,14 @@ export default function Benefits() {
           >
             <div className="flex p-6 rounded-3xl h-full items-center gap-5 bg-white/70 backdrop-blur-md border border-white/30 shadow-xl transition-all duration-300 cursor-pointer">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-md overflow-hidden">
+                <div className="w-16 h-16 bg-white rounded flex items-center justify-center shadow-md overflow-hidden">
                   <Image
                     src={benefit.imageUrl}
                     alt={benefit.heading}
                     width={70}
                     height={70}
                     className="object-contain"
+                    // style={{borderRadius:"50%"}}
                   />
                 </div>
               </div>

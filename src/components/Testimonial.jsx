@@ -1,243 +1,160 @@
-// components/TestimonialCarousel.jsx
 "use client"
-import { useState, useEffect } from 'react';
 
-const TestimonialCarousel = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+import { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { FaArrowLeft, FaArrowRight, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import Head from "next/head";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+function Testimonial() {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  // Static testimonial data
   const testimonials = [
     {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Marketing Director",
-      company: "NexTech Solutions",
-      content: "This service completely transformed our customer engagement. We've seen a 45% increase in satisfaction scores since implementation.",
-      rating: 5,
-      category: "marketing",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+      para: "This service exceeded my expectations. The team was professional and delivered results faster than I anticipated. I would highly recommend them to anyone looking for quality work.",
+      src: "/api/placeholder/100/100",
+      title: "John Smith",
+      text1: "New York, USA",
+      rating: 4.5
     },
     {
-      id: 2,
-      name: "Michael Chen",
-      role: "CTO",
-      company: "DataFlow Inc",
-      content: "The technical support team is exceptional. They helped us integrate seamlessly with our existing infrastructure.",
-      rating: 4,
-      category: "technical",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      para: "I've been using this service for over a year now and they consistently deliver excellent results. Their attention to detail is remarkable and their customer support is top-notch.",
+      src: "/api/placeholder/100/100",
+      title: "Sarah Johnson",
+      text1: "London, UK",
+      rating: 5
     },
     {
-      id: 3,
-      name: "Jessica Williams",
-      role: "E-commerce Manager",
-      company: "StyleHub",
-      content: "Our conversion rates increased by 32% in the first month. This is exactly what our online store needed.",
-      rating: 5,
-      category: "ecommerce",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      para: "As a small business owner, finding reliable service providers is crucial. This company has been a game-changer for my business. Their solutions are innovative and effective.",
+      src: "/api/placeholder/100/100",
+      title: "Michael Chen",
+      text1: "Toronto, Canada",
+      rating: 4
     },
     {
-      id: 4,
-      name: "David Rodriguez",
-      role: "Startup Founder",
-      company: "GreenGrowth",
-      content: "As a small business, we needed an affordable solution that could scale with us. This delivered on all fronts.",
-      rating: 5,
-      category: "startup",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+      para: "The quality of work is exceptional. They understood exactly what I needed and delivered beyond my expectations. Will definitely work with them again in the future.",
+      src: "/api/placeholder/100/100",
+      title: "Emma Wilson",
+      text1: "Sydney, Australia",
+      rating: 4.5
     },
     {
-      id: 5,
-      name: "Emily Thompson",
-      role: "Product Manager",
-      company: "CloudWorks",
-      content: "The analytics dashboard provides insights we didn't even know were possible. It's revolutionized our decision-making process.",
-      rating: 4,
-      category: "technical",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1288&q=80"
+      para: "I was hesitant at first, but I'm so glad I decided to try this service. The results speak for themselves. My business has grown significantly since working with them.",
+      src: "/api/placeholder/100/100",
+      title: "David Brown",
+      text1: "Berlin, Germany",
+      rating: 3.5
     },
     {
-      id: 6,
-      name: "James Wilson",
-      role: "CEO",
-      company: "Wilson & Associates",
-      content: "Implementation was smooth and the results were immediate. Our team adapted to the new system with minimal training.",
-      rating: 5,
-      category: "leadership",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+      para: "Prompt service, excellent communication, and outstanding results. What more could you ask for? I'm thoroughly impressed and will be a returning customer.",
+      src: "/api/placeholder/100/100",
+      title: "Lisa Garcia",
+      text1: "Madrid, Spain",
+      rating: 5
     }
   ];
-
-  const categories = [
-    { id: 'all', name: 'All Testimonials' },
-    { id: 'marketing', name: 'Marketing' },
-    { id: 'technical', name: 'Technical' },
-    { id: 'ecommerce', name: 'E-commerce' },
-    { id: 'startup', name: 'Startups' },
-    { id: 'leadership', name: 'Leadership' }
-  ];
-
-  const filteredTestimonials = activeCategory === 'all' 
-    ? testimonials 
-    : testimonials.filter(testimonial => testimonial.category === activeCategory);
-
-  // Auto-play carousel
-  useEffect(() => {
-    let interval;
-    if (isAutoPlaying && filteredTestimonials.length > 1) {
-      interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev === filteredTestimonials.length - 1 ? 0 : prev + 1));
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [currentSlide, isAutoPlaying, filteredTestimonials.length]);
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? filteredTestimonials.length - 1 : prev - 1));
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev === filteredTestimonials.length - 1 ? 0 : prev + 1));
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
 
   const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <span key={i} className={i < rating ? "text-yellow-400" : "text-gray-300"}>
-        ★
-      </span>
-    ));
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= Math.floor(rating)) {
+        stars.push(<FaStar key={i} className="text-blue-800 text-lg" />);
+      } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+        stars.push(<FaStarHalfAlt key={i} className="text-blue-800 text-lg" />);
+      } else {
+        stars.push(<FaStar key={i} className="text-gray-300 text-lg" />);
+      }
+    }
+    return stars;
   };
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover why businesses choose our solution and how it's helping them achieve their goals.
-          </p>
-        </div>
+    <div className="min-h-screen bg-white py-8">
+      <Head>
+        <title>Testimonials</title>
+        <meta name="description" content="What our clients say about our services" />
+      </Head>
+      
+      <div className="container mx-auto px-4">
+        <h4 className="text-blue-600 pt-8 pb-2 text-center text-lg font-semibold">----- Testimonial -----</h4>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">What Our Clients Say</h1>
 
-        {/* Category Filters */}
-        {/* <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => {
-                setActiveCategory(category.id);
-                setCurrentSlide(0);
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category.id
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-indigo-100'
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div> */}
-
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden rounded-xl bg-white shadow-lg">
-          {/* Carousel Track */}
-          <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {filteredTestimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className="flex-shrink-0 w-full">
-                <div className="p-8 md:p-12 flex flex-col md:flex-row items-center">
-                  <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                    <div className="relative">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="w-48 h-48 rounded-full object-cover shadow-lg"
-                      />
-                      <div className="absolute -bottom-2 -right-2 bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center">
-                        <span className="text-2xl">”</span>
-                      </div>
-                    </div>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true, el: '.testimonial-pagination' }}
+          navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-12"
+        >
+          {testimonials.map((testi, index) => (
+            <SwiperSlide key={index}>
+              <div className="h-full flex justify-center p-2">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-sm flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl">
+                  {/* User Image */}
+                  <div className="w-24 h-24 rounded-full overflow-hidden mt-6 border-4 border-blue-100">
+                    <img 
+                      src={testi.src} 
+                      alt={testi.title} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="md:w-2/3 md:pl-12">
-                    <div className="flex mb-4 text-xl">
-                      {renderStars(testimonial.rating)}
-                    </div>
-                    <p className="text-xl text-gray-700 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
-                    <div>
-                      <h3 className="font-semibold text-2xl text-gray-800">{testimonial.name}</h3>
-                      <p className="text-lg text-gray-600">{testimonial.role}, {testimonial.company}</p>
-                    </div>
+
+                  {/* Name */}
+                  <h3 className="mt-4 text-xl font-semibold text-gray-800">{testi.title}</h3>
+
+                  {/* Location */}
+                  <p className="text-gray-500 text-sm mt-1">{testi.text1}</p>
+
+                  {/* Star Rating */}
+                  <div className="flex mb-4 mt-2">
+                    {renderStars(testi.rating)}
+                  </div>
+
+                  {/* Testimonial Text */}
+                  <div className="bg-blue-50 mt-2 rounded-xl w-full p-4 flex-grow">
+                    <p className="text-gray-700 italic">"{testi.para}"</p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-          {/* Navigation Arrows */}
-          {filteredTestimonials.length > 1 && (
-            <>
-              <button
-                onClick={goToPrevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-indigo-50 transition-colors"
-              >
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={goToNextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:bg-indigo-50 transition-colors"
-              >
-                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </>
-          )}
-
-          {/* Indicators */}
-          {filteredTestimonials.length > 1 && (
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-              {filteredTestimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentSlide ? 'bg-indigo-600' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
-          )}
+        <div className="flex justify-center mt-4">
+          <button ref={prevRef} className="mx-2 p-3 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors">
+            <FaArrowLeft />
+          </button>
+          <button ref={nextRef} className="mx-2 p-3 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors">
+            <FaArrowRight />
+          </button>
         </div>
-
-        {/* Empty State */}
-        {filteredTestimonials.length === 0 && (
-          <div className="text-center py-12 bg-white rounded-xl shadow-lg">
-            <svg className="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="mt-4 text-xl font-medium text-gray-700">No testimonials found</h3>
-            <p className="mt-2 text-gray-500">We don't have any testimonials in this category yet.</p>
-          </div>
-        )}
+        
+        {/* Custom pagination */}
+        <div className="testimonial-pagination flex justify-center mt-6 space-x-2" />
       </div>
-    </section>
+    </div>
   );
-};
+}
 
-export default TestimonialCarousel;
+export default Testimonial;
