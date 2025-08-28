@@ -30,7 +30,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="relative w-full px-6 py-16 bg-gray-50">
+    <section id="services" className="relative w-full px-6 py-16 bg-gray-50">
       {/* Floating circle background */}
       <motion.div
         className="absolute top-10 left-10 w-32 h-32 rounded-full bg-indigo-200 opacity-20"

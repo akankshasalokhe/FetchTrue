@@ -272,7 +272,7 @@ export default function ContactUs() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                  <div className=" bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
                     <FaMapMarkerAlt className="h-6 w-6" />
                   </div>
                   <div>
@@ -286,7 +286,7 @@ export default function ContactUs() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                  <div className=" bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
                     <FaPhoneAlt className="h-6 w-6" />
                   </div>
                   <div>
@@ -300,7 +300,7 @@ export default function ContactUs() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
+                  <div className="bg-opacity-20 p-3 rounded-full mr-4 flex-shrink-0">
                     <FaEnvelopeOpen className="h-6 w-6" />
                   </div>
                   <div>
