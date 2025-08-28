@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ServicesSection = () => {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -11,384 +11,91 @@ const ServicesSection = () => {
       title: "Onboarding",
       description:
         "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
-      videoId: "dRxAN8wLxIk",
-      icon: "👥",
-      color: "#3B82F6",
+      videoId: "dRxAN8wLxIk", // Only the ID part
     },
     {
       id: 2,
-      title: "Business Consulting",
+      title: "Legal Services",
       description:
-        "Comprehensive business solutions to help you establish, grow, and scale your operations with strategic planning and execution.",
-      videoId: null,
-      icon: "📈",
-      color: "#6366F1",
+        "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
+      videoId: "os4ReDyMCphhARd2",
     },
-    // Add more services...
+    {
+      id: 3,
+      title: "On-demand Services",
+      description:
+        "Boost employee engagement with interactive tools and solutions that promote collaboration, innovation, and a positive work culture.",
+      videoId: "os4ReDyMCphhARd2",
+    },
   ];
 
-  const playVideo = (id) => {
-    const service = services.find((s) => s.id === id);
-    if (service && service.videoId) {
-      setActiveVideo(activeVideo === id ? null : id);
-    }
-  };
-
-  const getEmbedUrl = (videoId) =>
-    `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&autoplay=1&mute=1&controls=1`;
-
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const PlayButtonPlaceholder = ({ service, onClick }) => (
-    <motion.div
-      style={{
-        position: "relative",
-        aspectRatio: "16/9",
-        borderRadius: "12px",
-        overflow: "hidden",
-        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-        cursor: "pointer",
-        background: `linear-gradient(135deg, ${service.color}80, #60A5FA80)`,
-      }}
-      onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.97 }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <motion.div
-          style={{
-            width: "80px",
-            height: "80px",
-            backgroundColor: "rgba(255, 255, 255, 0.2)",
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backdropFilter: "blur(4px)",
-          }}
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
-          <svg
-            style={{ width: "48px", height: "48px", color: "white" }}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </motion.div>
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          padding: "16px",
-          background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
-        }}
-      >
-        <p style={{ color: "white", fontWeight: 500 }}>Watch overview</p>
-      </div>
-    </motion.div>
-  );
-
-  const NoVideoPlaceholder = ({ service }) => (
-    <motion.div
-      style={{
-        aspectRatio: "16/9",
-        borderRadius: "12px",
-        overflow: "hidden",
-        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-        position: "relative",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: `${service.color}20`,
-      }}
-      whileHover={{ scale: 1.02 }}
-    >
-      <div style={{ padding: "24px", textAlign: "center" }}>
-        <motion.div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "64px",
-            height: "64px",
-            borderRadius: "50%",
-            backgroundColor: "white",
-            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-            fontSize: "24px",
-            marginBottom: "16px",
-          }}
-          whileHover={{ rotate: 5, scale: 1.05 }}
-        >
-          {service.icon}
-        </motion.div>
-        <h4
-          style={{
-            fontSize: "18px",
-            fontWeight: 600,
-            color: "#374151",
-            marginBottom: "8px",
-          }}
-        >
-          Content Coming Soon
-        </h4>
-        <p style={{ color: "#6B7280" }}>
-          We're preparing something special for this service
-        </p>
-      </div>
-    </motion.div>
-  );
-
   return (
-    <section
-      id="services"
-      style={{
-        position: "relative",
-        padding: "80px 24px",
-        background: "linear-gradient(135deg, #EFF6FF 0%, #EDE9FE 100%)",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          position: "relative",
-          zIndex: 10,
-        }}
-      >
+    <section className="relative w-full px-6 py-16 bg-gray-50">
+      {/* Floating circle background */}
+      <motion.div
+        className="absolute top-10 left-10 w-32 h-32 rounded-full bg-indigo-200 opacity-20"
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+
+      <div className="relative max-w-[1200px] mx-auto z-10">
         {/* Section Title */}
         <motion.div
-          style={{ textAlign: "center", marginBottom: "64px" }}
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
-            style={{
-              fontSize: "36px",
-              fontWeight: 700,
-              marginBottom: "16px",
-              color: "#1F2937",
-            }}
-          >
+          <h2 className="text-4xl font-bold mb-4 text-gray-900">
             Our{" "}
-            <span
-              style={{
-                background:
-                  "linear-gradient(to right, #2563EB, #06B6D4)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
               Services
             </span>
           </h2>
-          <p
-            style={{
-              fontSize: "18px",
-              color: "#6B7280",
-              maxWidth: "672px",
-              margin: "0 auto",
-            }}
-          >
-            Discover our comprehensive range of services designed to help
-            your business thrive in today's competitive landscape.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover our comprehensive range of services designed to help your
+            business thrive in today's competitive landscape.
           </p>
         </motion.div>
 
-        {/* Services in Zig-Zag Layout */}
-        <motion.div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "112px",
-          }}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              style={{
-                display: "flex",
-                flexDirection: index % 2 === 0 ? "row" : "row-reverse",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "60px",
-              }}
-              variants={itemVariants}
-            >
-              {/* Content */}
-              <motion.div
-                style={{ flex: 1 }}
-                whileHover={{ x: index % 2 === 0 ? 5 : -5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "20px",
-                  }}
-                >
-                  <motion.div
-                    style={{
-                      padding: "12px",
-                      borderRadius: "12px",
-                      background: `linear-gradient(135deg, ${service.color}, #60A5FA)`,
-                      color: "white",
-                      marginRight: "16px",
-                      fontSize: "24px",
-                    }}
-                  >
-                    {service.icon}
-                  </motion.div>
-                  <h3
-                    style={{
-                      fontSize: "24px",
-                      fontWeight: 600,
-                      color: "#1F2937",
-                    }}
-                  >
-                    {service.title}
-                  </h3>
-                </div>
-                <p
-                  style={{
-                    color: "#6B7280",
-                    fontSize: "18px",
-                    lineHeight: "1.6",
-                    marginBottom: "24px",
-                  }}
-                >
-                  {service.description}
-                </p>
+        {/* Service Items */}
+        {services.map((service, index) => (
+          <motion.div
+            key={service.id}
+            className={`flex flex-col md:flex-row items-center mb-16 ${
+              index % 2 === 1 ? "md:flex-row-reverse" : ""
+            }`}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Text Section */}
+            <div className="w-full md:w-1/2 p-6">
+              <h3 className="text-3xl font-bold text-blue-600 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
 
-                {service.videoId && (
-                  <motion.button
-                    style={{
-                      padding: "10px 24px",
-                      borderRadius: "9999px",
-                      background:
-                        "linear-gradient(to right, #2563EB, #06B6D4)",
-                      color: "white",
-                      fontWeight: 500,
-                      display: "flex",
-                      alignItems: "center",
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow:
-                        "0 10px 25px -5px rgba(37, 99, 235, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => playVideo(service.id)}
-                  >
-                    <svg
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        marginRight: "8px",
-                      }}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Watch Video
-                  </motion.button>
-                )}
-              </motion.div>
-
-              {/* Video/Placeholder */}
-              <motion.div style={{ flex: 1 }}>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeVideo === service.id ? "video" : "placeholder"}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {activeVideo === service.id && service.videoId ? (
-                      <div
-                        style={{
-                          aspectRatio: "16/9",
-                          borderRadius: "16px",
-                          overflow: "hidden",
-                          boxShadow:
-                            "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                        }}
-                      >
-                        <iframe
-                          src={getEmbedUrl(service.videoId)}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            border: "none",
-                          }}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          title={`${service.title} Video`}
-                        />
-                      </div>
-                    ) : service.videoId ? (
-                      <PlayButtonPlaceholder
-                        service={service}
-                        onClick={() => playVideo(service.id)}
-                      />
-                    ) : (
-                      <NoVideoPlaceholder service={service} />
-                    )}
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
+            {/* Video Section */}
+            <div className="w-full md:w-1/2 p-6 flex justify-center">
+              <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${service.videoId}?rel=0`}
+                  title={service.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
