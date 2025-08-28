@@ -8,21 +8,63 @@ const ServicesSection = () => {
   const services = [
     {
       id: 1,
-      title: "Onboarding",
+      title: "Franchise",
       description:
         "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
       videoId: "dRxAN8wLxIk", // Only the ID part
     },
     {
       id: 2,
-      title: "Legal Services",
+      title: "Business",
       description:
         "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
       videoId: "os4ReDyMCphhARd2",
     },
     {
       id: 3,
-      title: "On-demand Services",
+      title: "Branding & Marketing",
+      description:
+        "Boost employee engagement with interactive tools and solutions that promote collaboration, innovation, and a positive work culture.",
+      videoId: "os4ReDyMCphhARd2",
+    },
+     {
+      id: 4,
+      title: "Legal Services",
+      description:
+        "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
+      videoId: "dRxAN8wLxIk", // Only the ID part
+    },
+    {
+      id: 5,
+      title: "Finance",
+      description:
+        "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
+      videoId: "os4ReDyMCphhARd2",
+    },
+    {
+      id: 6,
+      title: "IT Services",
+      description:
+        "Boost employee engagement with interactive tools and solutions that promote collaboration, innovation, and a positive work culture.",
+      videoId: "os4ReDyMCphhARd2",
+    },
+     {
+      id: 7,
+      title: "Education",
+      description:
+        "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
+      videoId: "dRxAN8wLxIk", // Only the ID part
+    },
+    {
+      id: 8,
+      title: "On-Demand Services",
+      description:
+        "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
+      videoId: "os4ReDyMCphhARd2",
+    },
+    {
+      id: 9,
+      title: "OnBoarding",
       description:
         "Boost employee engagement with interactive tools and solutions that promote collaboration, innovation, and a positive work culture.",
       videoId: "os4ReDyMCphhARd2",
