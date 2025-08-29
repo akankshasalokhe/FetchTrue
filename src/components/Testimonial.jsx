@@ -76,7 +76,7 @@ function Testimonial() {
   };
 
   return (
-    <div className="min-h-screen bg-white py-8">
+    <div className="min-h-screen bg-white py-8 px-20">
       <Head>
         <title>Testimonials</title>
         <meta name="description" content="What our clients say about our services" />
@@ -109,7 +109,7 @@ function Testimonial() {
         >
           {testimonials.map((testi, index) => (
             <SwiperSlide key={index}>
-              <div className="h-full flex justify-center p-2">
+              <div className="h-full flex justify-center p-2 ">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-sm flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl">
                   {/* User Image */}
                   <div className="w-24 h-24 rounded-full overflow-hidden mt-6 border-4 border-blue-100">
