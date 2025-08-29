@@ -27,9 +27,9 @@ function Footer() {
       { type: "facebook", link: "https://www.facebook.com/share/1BXEeQnmYF/" },
       {
         type: "instagram",
-        link: "https://www.instagram.com/biz.booster.2x?igsh=MXRmcmViYWVjNXE2YQ==",
+        link: "https://www.instagram.com/fetchtrue?utm_source=qr&igsh=dzl1NTJ1c2Fxcnpx",
       },
-      { type: "linkedin", link: "https://linkedin.com" },
+      { type: "linkedin", link: "https://www.linkedin.com/company/fetchtrue/" },
       { type: "whatsapp", link: "https://wa.me/919765303735" },
       { type: "youtube", link: "https://youtube.com" },
       {
@@ -109,22 +109,23 @@ function Footer() {
     <div>
       <h4 className="font-bold mb-4">Quick Links</h4>
       <ul className="space-y-4">
-        <li>
-          <Link href="/privacypolicy" className="flex items-center gap-2 hover:underline">
-            <MdOutlineKeyboardDoubleArrowRight /> Privacy Policy
-          </Link>
-        </li>
-        <li>
-          <Link href="/refund&returnpolicy" className="flex items-center gap-2 hover:underline">
-            <MdOutlineKeyboardDoubleArrowRight /> Return & Refund Policy
-          </Link>
-        </li>
-        <li>
-          <Link href="/termsandcondition" className="flex items-center gap-2 hover:underline">
-            <MdOutlineKeyboardDoubleArrowRight /> Terms & Conditions
-          </Link>
-        </li>
-      </ul>
+  <li>
+    <Link href="/privacypolicy" className="flex items-center gap-2 hover:underline">
+      <MdOutlineKeyboardDoubleArrowRight /> Privacy Policy
+    </Link>
+  </li>
+  <li>
+    <Link href="/returnpolicy" className="flex items-center gap-2 hover:underline">
+      <MdOutlineKeyboardDoubleArrowRight /> Return & Refund Policy
+    </Link>
+  </li>
+  <li>
+    <Link href="/termscondition" className="flex items-center gap-2 hover:underline">
+      <MdOutlineKeyboardDoubleArrowRight /> Terms & Conditions
+    </Link>
+  </li>
+</ul>
+
     </div>
 
     {/* Download Section */}
