@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const steps = [
   { title: "Download App", description: "Get the FetchTrue app from Google Play or App Store." },
   { title: "Sign Up", description: "Register using your email or phone number." },
-  { title: "Account Verified", description: "Start exploring features and managing your business." },
+  { title: "Activate Packages", description: "Start exploring features and managing your business." },
 ];
 
 export default function HowItWorks() {
