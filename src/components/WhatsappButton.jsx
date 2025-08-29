@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
   const [scrolled, setScrolled] = useState(false);
 
   // ✅ Replace with your WhatsApp number (no + sign, only country code + number)
-  const whatsappNumber = "919876543210"; 
+  const whatsappNumber = "919309517500"; 
 
   useEffect(() => {
     const handleScroll = () => {
