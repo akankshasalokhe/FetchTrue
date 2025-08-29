@@ -7,6 +7,7 @@ import HowItWorks from "@/components/Steps";
 import DownloadApp from "@/components/DownloadApp";
 import Testimonials from "@/components/Testimonial";
 import ContactUs from "@/components/ContactUs";
+import WhatsAppButton from "@/components/WhatsappButton";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <PartnerDiagram />
         <Testimonials />
         <ContactUs />
+        <WhatsAppButton />
     </div>
   );
 }

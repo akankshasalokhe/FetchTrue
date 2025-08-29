@@ -21,7 +21,7 @@ function Footer() {
     address:
       "Office no.307, 3rd Floor, Amanora Chamber, Amanora Mall, Hadapsar, Pune- 411028",
     email: "info@fetchtrue.com",
-    phone: "+91 9765303735",
+    phone: "+91 9309517500",
     website: "www.fetchtrue.com",
     socialLinks: [
       { type: "facebook", link: "https://www.facebook.com/share/1BXEeQnmYF/" },
@@ -30,7 +30,7 @@ function Footer() {
         link: "https://www.instagram.com/fetchtrue?utm_source=qr&igsh=dzl1NTJ1c2Fxcnpx",
       },
       { type: "linkedin", link: "https://www.linkedin.com/company/fetchtrue/" },
-      { type: "whatsapp", link: "https://wa.me/919765303735" },
+      { type: "whatsapp", link: "https://wa.me/919309517500" },
       { type: "youtube", link: "https://www.youtube.com/@FetchTrue" },
       {
         type: "playstore",
@@ -94,15 +94,15 @@ function Footer() {
     <div>
       <h4 className="font-bold mb-5">Official Info:</h4>
       <p className="mb-3">{footerData?.address}</p>
-      <p className="mb-2 flex items-center gap-2">
+      <Link href={`mailto:${footerData?.email}`} className="mb-2 flex items-center gap-2">
         <FiMail /> {footerData?.email}
-      </p>
-      <p className="mb-2 flex items-center gap-2">
+      </Link>
+      <Link href={`tel:+${footerData?.phone}`} className="mb-2 flex items-center gap-2">
         <FaPhoneAlt /> {footerData?.phone}
-      </p>
-      <p className="mb-2 flex items-center gap-2">
+      </Link>
+      {/* <p className="mb-2 flex items-center gap-2">
         <TbWorld /> {footerData?.website}
-      </p>
+      </p> */}
     </div>
 
     {/* Quick Links */}
