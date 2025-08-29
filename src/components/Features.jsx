@@ -8,7 +8,7 @@ const benefitsData = [
     heading: "Reliable Support",
     description:
       "Receive assistance anytime from our committed support team, ensuring quick solutions and a seamless experience.",
-    imageUrl: "/images/benefit1.png",
+    imageUrl: "/GP.png",
   },
   {
     heading: "Boost Sales Effortlessly",
@@ -92,15 +92,15 @@ export default function Benefits() {
             whileHover={{ scale: 1.05, rotateX: 2, rotateY: 2 }}
             transition={{ type: "spring", stiffness: 120, duration: 0.5 }}
           >
-            <div className="flex p-6 rounded-3xl h-full items-center gap-5 bg-white/70 backdrop-blur-md border border-white/30 shadow-xl transition-all duration-300 cursor-pointer">
+            <div className="flex p-6 rounded-3xl h-full items-center gap-6 bg-white/70 backdrop-blur-md border border-white/40 shadow-2xl transition-all duration-300 cursor-pointer">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-white rounded flex items-center justify-center shadow-md overflow-hidden">
+                <div className="w-20 h-20 rounded-4xl border-2 border-blue-200 flex items-center justify-center shadow-2xl overflow-hidden">
                   <Image
                     src={benefit.imageUrl}
                     alt={benefit.heading}
                     width={70}
                     height={70}
-                    className="object-contain"
+                    className="object-contain "
                     // style={{borderRadius:"50%"}}
                   />
                 </div>

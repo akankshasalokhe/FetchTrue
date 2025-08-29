@@ -26,7 +26,7 @@ export default function AboutSection() {
   return (
     <>
       {/* ABOUT SECTION */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden py-20 px-6 lg:px-16">
+      <section id="about" className="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden py-20 px-6 lg:px-16">
         {/* Background Abstract Shapes */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full opacity-20 blur-3xl -z-10 animate-pulse"></div>
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-indigo-300 rounded-full opacity-10 blur-3xl -z-10 animate-pulse"></div>

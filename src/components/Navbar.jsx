@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Features", href: "#features" },
   { label: "Services", href: "#services" },
   // { label: "Franchise", href: "#franchise" },
-  { label: "Contact", href: "#contact" },
+  // { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -50,10 +50,10 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="#demo"
+              href="#contact"
               className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
             >
-              Request Demo
+              Contact Us
             </Link>
           </nav>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-base font-semibold text-white hover:bg-blue-700"
             >
-              Request Demo <ChevronRight className="h-4 w-4" />
+              Contact Us <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
