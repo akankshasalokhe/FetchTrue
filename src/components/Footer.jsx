@@ -31,7 +31,7 @@ function Footer() {
       },
       { type: "linkedin", link: "https://www.linkedin.com/company/fetchtrue/" },
       { type: "whatsapp", link: "https://wa.me/919765303735" },
-      { type: "youtube", link: "https://youtube.com" },
+      { type: "youtube", link: "https://www.youtube.com/@FetchTrue" },
       {
         type: "playstore",
         link: "https://play.google.com/",
