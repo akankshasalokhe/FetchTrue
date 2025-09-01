@@ -8,6 +8,7 @@ import DownloadApp from "@/components/DownloadApp";
 import Testimonials from "@/components/Testimonial";
 import ContactUs from "@/components/ContactUs";
 import WhatsAppButton from "@/components/WhatsappButton";
+import ExtraIncome from "@/components/ExtraIncome";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <AboutSection />
         <KeyFeatures />
         <HowItWorks />
+        <ExtraIncome />
         <DownloadApp />
         <ServicesPage />
         <PartnerDiagram />

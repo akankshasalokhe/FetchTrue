@@ -299,7 +299,7 @@ export default function DownloadBanner() {
             </div>
             
             {/* QR Code Alternative */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
@@ -326,7 +326,7 @@ export default function DownloadBanner() {
                 <h4 className="font-semibold text-gray-800 text-sm md:text-base">Scan to Download</h4>
                 <p className="text-xs md:text-sm text-gray-600">Use your phone's camera to scan the QR code</p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
         
