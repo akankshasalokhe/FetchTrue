@@ -1,0 +1,75 @@
+.serviceCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.playButton {
+  transition: all 0.3s ease-in-out;
+}
+
+.playButton:active {
+  transform: scale(0.95);
+}
+.sectionWrapper {
+  max-width: 1200px;   /* keeps content centered */
+  margin: 0 auto;      /* adds equal left & right margin */
+  padding: 2rem 1rem;  /* top/bottom + side padding */
+}
+
+.serviceCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.serviceCard h3 {
+  font-size: 1.25rem;  /* ~20px */
+  color: #1e3a8a;      /* deep blue */
+}
+
+.serviceCard p {
+  font-size: 1rem;     /* ~16px */
+  line-height: 1.6;
+  color: #4b5563;      /* gray-700 */
+}
+
+.playButton {
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;     /* ~32px */
+  color: #111827;      /* near-black */
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.125rem; /* ~18px */
+  line-height: 1.7;
+  color: #374151;      /* gray-800 */
+}
+
+/* Mobile-specific */
+@media (max-width: 768px) {
+  .serviceCard {
+    border: 1px solid #e5e7eb;
+  }
+}
