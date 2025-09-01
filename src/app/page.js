@@ -16,7 +16,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <KeyFeatures />
-        <HowItWorks />
+        {/* <HowItWorks /> */}
         <ExtraIncome />
         <DownloadApp />
         <ServicesPage />

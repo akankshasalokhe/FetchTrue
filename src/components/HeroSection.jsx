@@ -1,36 +1,37 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-
-
+import { useState, useEffect } from "react";
+import Head from "next/head";
+import Link from "next/link";
 
 export default function VideoHeroPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [videoError, setVideoError] = useState(false);
-  const [scrolled,setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Simulate video loading
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
 
-
-    return () => clearTimeout(timer);
-
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#00509D] to-[#003F7D]">
       <Head>
         <title>Business Solutions Hero</title>
-        <meta name="description" content="Grow your business with our B2B solutions" />
+        <meta
+          name="description"
+          content="Grow your business with our B2B solutions"
+        />
       </Head>
 
       <section className="relative w-full h-screen flex items-center justify-center text-center text-white overflow-hidden">
@@ -76,43 +77,34 @@ export default function VideoHeroPage() {
           className="relative z-10 px-6 max-w-3xl"
           style={{
             opacity: isLoading ? 0 : 1,
-            transform: isLoading ? 'translateY(40px)' : 'translateY(0)',
-            transition: 'opacity 1s ease, transform 1s ease'
+            transform: isLoading ? "translateY(40px)" : "translateY(0)",
+            transition: "opacity 1s ease, transform 1s ease",
           }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Grow Your Business with Our B2B & Franchise Solutions
           </h1>
           <p className="text-lg md:text-xl mb-8">
-            Unlock new opportunities and scale effortlessly with our powerful platform.
+            Unlock new opportunities and scale effortlessly with our powerful
+            platform.
           </p>
-          <Link href="#about">
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button 
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="#about"
               className="bg-[#00509D] hover:bg-[#003F7D] text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Started
-            </button>
-            {/* <button 
+            </Link>
+            {/* <Link
+              href="#learn-more"
               className="bg-white text-[#00509D] hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
             >
               Learn More
-            </button> */}
+            </Link> */}
           </div>
-          </Link>
         </div>
-
-        {/* Scroll indicator */}
-        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="animate-bounce w-6 h-6 border-2 border-white rounded-full flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </div>
-        </div> */}
       </section>
-
-    
     </div>
   );
 }

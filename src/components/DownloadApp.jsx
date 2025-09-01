@@ -101,7 +101,7 @@ export default function DownloadBanner() {
               >
                 <FaHandshake className="text-xl md:text-2xl" />
               </motion.div>
-              <h1 className="text-3xl md:text-4xl font-bold">FetchTrue</h1>
+              <h1 className="text-3xl md:text-4xl font-bold">Fetch True</h1>
             </motion.div>
             
             <motion.h2 
