@@ -125,7 +125,7 @@ const ServicesSection = () => {
           {showVideo ? (
             <iframe
               className="w-full h-72 md:h-96 rounded-lg shadow-md"
-              src={`https://www.youtube.com/embed/${activeService.videoId}?autoplay=1`}
+              src={`https://www.youtube.com/embed/${activeService.videoId}?autoplay=1&rel=0&modestbranding=1`}
               title={activeService.title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
