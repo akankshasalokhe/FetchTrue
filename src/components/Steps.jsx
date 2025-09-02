@@ -6,6 +6,21 @@ import styles from "./Steps.module.css";
 
 const StepCard = ({ step, index, activeStep }) => {
   const isActive = activeStep === index;
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    if (isActive && index === 0) {
+      const phoneNumber = "+91 98xxxxxxx0";
+      setTypedText(""); // reset when step is active again
+      let i = 0;
+      const interval = setInterval(() => {
+        setTypedText((prev) => prev + phoneNumber[i]);
+        i++;
+        if (i === 13) clearInterval(interval);
+      }, 300); // typing speed (medium)
+      return () => clearInterval(interval);
+    }
+  }, [isActive, index]);
 
   return (
     <motion.div
@@ -36,7 +51,7 @@ const StepCard = ({ step, index, activeStep }) => {
                 className="flex justify-between items-center px-2 mb-6"
                 initial={{ y: -20, opacity: 0 }}
                 animate={isActive ? { y: 0, opacity: 1 } : {}}
-                transition={{ delay: 0.6 }}
+                transition={{ delay: 0.7 }}
               >
                 <div className="w-6 h-6 rounded-full bg-gray-200"></div>
                 <div className="font-semibold text-gray-800">FetchTrue</div>
@@ -61,20 +76,22 @@ const StepCard = ({ step, index, activeStep }) => {
                 Enter Mobile Number
               </motion.div>
 
+              {/* ✅ Typewriter effect */}
               <motion.div
-                className="h-12 border rounded-lg flex items-center justify-center text-sm text-gray-700 bg-white mx-4 mb-6 shadow-sm"
+                className="h-12 border rounded-lg flex items-center justify-center text-sm text-gray-700 bg-white mx-4 mb-6 shadow-sm font-mono"
                 initial={{ width: "0%" }}
                 animate={isActive ? { width: "80%" } : {}}
                 transition={{ duration: 0.9, delay: 1.5 }}
               >
-                +91 98765 43210
+                {typedText}
+                <span className="animate-pulse">|</span>
               </motion.div>
 
               <motion.button
                 className="mt-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg shadow-lg w-4/5 font-medium"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isActive ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 1.5 }}
+                transition={{ delay: 2.5 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -82,6 +99,7 @@ const StepCard = ({ step, index, activeStep }) => {
               </motion.button>
             </motion.div>
           )}
+
 
           {index === 1 && (
             <motion.div
