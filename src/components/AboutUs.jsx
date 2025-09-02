@@ -85,7 +85,7 @@ export default function AboutSection() {
               className="w-[320px] md:w-[420px] lg:w-[480px]"
             >
               <Image
-                src="/Fetch True Mockup v002.png" // Replace with your mockup image path
+                src="/9 module png b.png" // Replace with your mockup image path
                 alt="App Mockup"
                 width={400}
                 height={400}
