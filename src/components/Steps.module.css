@@ -1,0 +1,40 @@
+/* Steps.module.css */
+.phone {
+  position: relative;
+  width: 220px;
+  height: 420px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 32px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 18px;
+  background: #000;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.screen {
+  width: 92%;
+  height: 92%;
+  background: #f9fafb;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
