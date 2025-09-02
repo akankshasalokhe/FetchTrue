@@ -17,10 +17,10 @@ export default function Home() {
         <AboutSection />
         <KeyFeatures />
         {/* <HowItWorks /> */}
-        <ExtraIncome />
         <DownloadApp />
         <ServicesPage />
         <PartnerDiagram />
+        <ExtraIncome />
         <Testimonials />
         <ContactUs />
         <WhatsAppButton />
