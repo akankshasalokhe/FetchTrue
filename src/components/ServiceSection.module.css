@@ -1,27 +1,7 @@
-.serviceCard {
-  background: #fff;
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.serviceCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-}
-
-.playButton {
-  transition: all 0.3s ease-in-out;
-}
-
-.playButton:active {
-  transform: scale(0.95);
-}
 .sectionWrapper {
-  max-width: 1200px;   /* keeps content centered */
-  margin: 0 auto;      /* adds equal left & right margin */
-  padding: 2rem 1rem;  /* top/bottom + side padding */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .serviceCard {
@@ -40,6 +20,7 @@
 .serviceCard h3 {
   font-size: 1.25rem;  /* ~20px */
   color: #1e3a8a;      /* deep blue */
+  margin-bottom: 0.5rem;
 }
 
 .serviceCard p {
@@ -48,28 +29,57 @@
   color: #4b5563;      /* gray-700 */
 }
 
+/* ✅ Unified Play Button */
 .playButton {
+  background: #2563eb;       /* blue-600 */
+  color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.playButton:hover {
+  background: #1e40af;       /* darker blue */
+}
+
+.playButton:active {
+  transform: scale(0.95);
 }
 
 .title {
   font-size: 2rem;     /* ~32px */
   color: #111827;      /* near-black */
   margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .description {
   font-size: 1.125rem; /* ~18px */
   line-height: 1.7;
   color: #374151;      /* gray-800 */
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-/* Mobile-specific */
+/* 📱 Mobile-specific */
 @media (max-width: 768px) {
   .serviceCard {
     border: 1px solid #e5e7eb;
+    padding: 1rem;
+  }
+
+  .serviceCard h3 {
+    font-size: 1.1rem;
+  }
+
+  .serviceCard p {
+    font-size: 0.95rem;
   }
 }

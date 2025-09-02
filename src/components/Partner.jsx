@@ -263,57 +263,68 @@ export default function PartnerDiagram() {
         </div>
 
         {/* Assurance Card at Bottom */}
-        <div className="mt-12 bg-white shadow-lg rounded-xl border border-gray-200 p-6 max-w-4xl mx-auto">
-          <div className="flex items-start gap-4">
-            <img src="/benefit.png" alt="Assurance" className="w-30 h-30" />
-            <div>
-              <h3 className="text-xl font-bold text-gray-800">
-                We Assure You up to <span className="text-blue-600">5X Return</span>
-              </h3>
-              <p className="text-sm text-gray-600 mt-1">
-                If you earn less than 5 Lakh in 3 year, we‘ll refund up to 5X your initial amount
-              </p>
-              <p className="mt-3 font-semibold text-gray-700">
-                Your Extra Benefits:{" "}
-                <span className="font-normal">
-                  You’ve received ₹3,000 as your fixed monthly earning bonus for purchasing the package.
-                </span>
-              </p>
-              <p className="text-blue-600 text-sm mt-2">
-                Safe, secure, and assured returns on your investment.
-              </p>
-            </div>
-          </div>
+<div className="mt-12 bg-white shadow-lg rounded-xl border border-gray-200 p-6 max-w-4xl mx-auto">
+  {/* Header Section */}
+  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+    <img
+      src="/benefit.png"
+      alt="Assurance"
+      className="w-20 h-20 sm:w-28 sm:h-28 object-contain mx-auto sm:mx-0"
+    />
+    <div className="text-center sm:text-left">
+      <h3 className="text-lg sm:text-xl font-bold text-gray-800">
+        We Assure You up to <span className="text-blue-600">5X Return</span>
+      </h3>
+      <p className="text-sm text-gray-600 mt-1">
+        If you earn less than 5 Lakh in 3 year, we‘ll refund up to 5X your initial amount
+      </p>
+      <p className="mt-3 font-semibold text-gray-700">
+        Your Extra Benefits:{" "}
+        <span className="font-normal">
+          You’ve received ₹3,000 as your fixed monthly earning bonus for purchasing the package.
+        </span>
+      </p>
+      <p className="text-blue-600 text-sm mt-2">
+        Safe, secure, and assured returns on your investment.
+      </p>
+    </div>
+  </div>
 
-          {/* Fee Breakdown */}
-          <div className="mt-6 border-t pt-4 space-y-2 text-sm text-gray-700">
-            <div className="flex justify-between">
-              <span>Franchise Fees</span>
-              <span>
-                <s>₹50,000</s> <span className="text-green-600">20% ₹10,000</span>
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span>Franchise Deposit (Refundable)</span>
-              <span>₹1,00,000</span>
-            </div>
-            <div className="flex justify-between font-semibold text-blue-700">
-              <span>Growth Total</span>
-              <span>₹1,10,000</span>
-            </div>
-          </div>
+  {/* Fee Breakdown */}
+  <div className="mt-6 border-t pt-4 space-y-2 text-sm text-gray-700">
+    <div className="flex justify-between">
+      <span>Franchise Fees</span>
+      <span>
+        <s>₹50,000</s>{" "}
+        <span className="text-green-600">20% ₹10,000</span>
+      </span>
+    </div>
+    <div className="flex justify-between">
+      <span>Franchise Deposit (Refundable)</span>
+      <span>₹1,00,000</span>
+    </div>
+    <div className="flex justify-between font-semibold text-blue-700">
+      <span>Growth Total</span>
+      <span>₹1,10,000</span>
+    </div>
+  </div>
 
-          {/* Payment Info */}
-          <div className="mt-4 flex justify-between items-center">
-            <div className="text-sm">
-              <p>Paid Amount: <span className="font-semibold">₹55,000</span></p>
-              <p>Remaining Amount: <span className="font-semibold">₹55,000</span></p>
-            </div>
-            <button className="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium shadow hover:bg-blue-700">
-              Activate Now
-            </button>
-          </div>
-        </div>
+  {/* Payment Info */}
+  <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div className="text-sm text-center sm:text-left">
+      <p>
+        Paid Amount: <span className="font-semibold">₹55,000</span>
+      </p>
+      <p>
+        Remaining Amount: <span className="font-semibold">₹55,000</span>
+      </p>
+    </div>
+    <button className="w-full sm:w-auto bg-blue-600 text-white px-5 py-2 rounded-lg font-medium shadow hover:bg-blue-700">
+      Activate Now
+    </button>
+  </div>
+</div>
+
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./ServiceSection.module.css"; // ✅ import CSS module
+import styles from "./ServiceSection.module.css"; // ✅ CSS module
 
 const services = [
   {
@@ -83,18 +83,18 @@ const ServicesSection = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <div className="w-full p-6 mt-10 lg:mt-20">
+    <div className={styles.sectionWrapper}>
       {/* ✅ Section Title + Description */}
       <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold mb-4 text-blue-400">Our Services</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <h2 className={styles.title}>Our Services</h2>
+        <p className={styles.description}>
           Discover the wide range of professional services we provide to help
           your business grow, scale, and succeed with tailored solutions.
         </p>
       </div>
 
       {/* Tabs (Desktop only) */}
-      <div className="hidden md:flex flex-wrap gap-3 mb-6 lg:ms-50">
+      <div className="hidden lg:flex flex-wrap gap-3 mb-6 lg:ml-12">
         {services.map((service) => (
           <button
             key={service.id}
@@ -113,33 +113,35 @@ const ServicesSection = () => {
         ))}
       </div>
 
-      {/* Large screen */}
-      <div className="hidden md:flex flex-col md:flex-row items-center gap-15 lg:ms-30 mt-10 me-30">
+      {/* Large screen layout */}
+      <div className="hidden lg:flex items-center gap-12 lg:ml-20 mt-10 mr-10">
         <motion.div
           key={activeService.id + (showVideo ? "-video" : "-image")}
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full md:w-1/2"
+          className="w-1/2"
         >
           {showVideo ? (
-            <iframe
-              className="w-full h-72 md:h-96 rounded-lg shadow-md"
-              src={`https://www.youtube.com/embed/${activeService.videoId}?autoplay=1&rel=0&modestbranding=1`}
-              title={activeService.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            <div className="relative w-full aspect-video">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+                src={`https://www.youtube.com/embed/${activeService.videoId}?autoplay=1&rel=0&modestbranding=1`}
+                title={activeService.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           ) : (
             <div className="relative group">
               <img
                 src={activeService.image}
                 alt={activeService.title}
-                className="w-full h-72 md:h-96 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-96 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
               />
               <button
                 onClick={() => setShowVideo(true)}
-                className={`${styles.playButton} absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700`}
+                className={`${styles.playButton} absolute bottom-4 left-1/2 transform -translate-x-1/2`}
               >
                 ▶ Play Video
               </button>
@@ -152,7 +154,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full md:w-1/2"
+          className="w-1/2"
         >
           <h2 className="text-3xl font-bold mb-4">{activeService.title}</h2>
           <p className="text-gray-600 leading-relaxed text-lg">
@@ -162,7 +164,7 @@ const ServicesSection = () => {
       </div>
 
       {/* Small screen cards */}
-      <div className="grid grid-cols-1 gap-6 md:hidden mt-4">
+      <div className="grid grid-cols-1 gap-6 lg:hidden mt-4">
         {services.map((service) => (
           <motion.div
             key={service.id}
@@ -172,7 +174,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.5 }}
             className={styles.serviceCard}
           >
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+            <h3>{service.title}</h3>
             <div className="relative mb-3">
               <img
                 src={service.image}
@@ -183,12 +185,12 @@ const ServicesSection = () => {
                 onClick={() =>
                   setActiveService(service) || setShowVideo(true)
                 }
-                className={`${styles.playButton} absolute bottom-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-lg shadow-md hover:bg-blue-700 text-sm`}
+                className={`${styles.playButton} absolute bottom-3 left-1/2 transform -translate-x-1/2`}
               >
                 ▶ Play Video
               </button>
             </div>
-            <p className="text-gray-600">{service.description}</p>
+            <p>{service.description}</p>
           </motion.div>
         ))}
       </div>
