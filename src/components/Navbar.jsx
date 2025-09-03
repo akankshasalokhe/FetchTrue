@@ -6,8 +6,11 @@ import { motion } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Growth Partner", href: "#growth-partner" },
+  { label: "Features", href: "#features" },
+  { label: "Blog", href: "#blog" }
   // { label: "Franchise", href: "#franchise" },
   // { label: "Contact", href: "#contact" },
 ];

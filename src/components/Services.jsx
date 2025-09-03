@@ -83,7 +83,7 @@ const ServicesSection = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <div className={styles.sectionWrapper}>
+    <div id="services" className={styles.sectionWrapper}>
       {/* ✅ Section Title + Description */}
       <div className="text-center mb-10">
         <h2 className={styles.title}>Our Services</h2>

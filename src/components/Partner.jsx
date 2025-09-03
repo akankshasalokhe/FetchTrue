@@ -58,16 +58,8 @@ export default function PartnerDiagram() {
       image: <img src="/GP.png" alt="Growth Partner" className="rounded-full" width={70} height={70} />,
       color: "from-blue-300 to-blue-400",
       borderColor: "border-blue-400",
-      welcomeKit: [
-        { icon: <FaTshirt />, label: "T-shirt" },
-        { icon: <FaLaptop />, label: "Laptop Bag" },
-        { icon: <FaBook />, label: "Notebook" },
-        { icon: <FaPen />, label: "Pen" },
-        { icon: <FaMugHot />, label: "Mug" },
-        { icon: <FaTint />, label: "Water Bottle" },
-        { icon: <FaIdCard />, label: "Lanyard & ID Holder" },
-        { icon: <FaBookOpen />, label: "Booklet" },
-      ],
+      offerImage: "/kit.jpeg",
+
     },
     {
       id: 2,
@@ -123,7 +115,7 @@ export default function PartnerDiagram() {
   ];
 
   return (
-    <section className="py-16 px-6 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+    <section id="growth-partner" className="py-16 px-6 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <h2
@@ -236,14 +228,15 @@ export default function PartnerDiagram() {
                     {partner.id === 1 && (
                       <div className="mt-4">
                         <h5 className="font-semibold text-gray-700 text-sm mb-2">Welcome Kit Includes:</h5>
-                        <div className="grid grid-cols-2 gap-4 text-center text-xs mt-4">
-                          {partner.welcomeKit.map((item, i) => (
-                            <div key={i} className="flex flex-col items-center">
-                              <div className="text-blue-600 text-lg">{item.icon}</div>
-                              <span className="mt-1 text-gray-600">{item.label}</span>
-                            </div>
-                          ))}
-                        </div>
+                        {/* <div className="grid grid-cols-2 gap-4 text-center text-xs mt-4">
+                          {partner.offerImage && (
+                            <img
+                              src={partner.offerImage}
+                              alt={`${partner.name} Offer`}
+                              className="rounded-lg mt-4 w-full"
+                            />
+                          )}
+                        </div> */}
                       </div>
                     )}
 
@@ -262,66 +255,77 @@ export default function PartnerDiagram() {
           ))}
         </div>
 
-        {/* Assurance Card at Bottom */}
-<div className="mt-12 bg-white shadow-lg rounded-xl border border-gray-200 p-6 max-w-4xl mx-auto">
+       {/* Assurance Card at Bottom */}
+<div className="mt-12 bg-white shadow-xl rounded-2xl border border-gray-100 p-6 max-w-4xl mx-auto">
   {/* Header Section */}
-  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-    <img
-      src="/benefit.png"
-      alt="Assurance"
-      className="w-20 h-20 sm:w-28 sm:h-28 object-contain mx-auto sm:mx-0"
-    />
-    <div className="text-center sm:text-left">
-      <h3 className="text-lg sm:text-xl font-bold text-gray-800">
+  <div className="flex flex-col sm:flex-row items-start gap-6">
+    {/* <div className="flex-shrink-0 mx-auto sm:mx-0"> */}
+      <img
+        src="/icon (3).png"
+        alt="Assurance"
+        width={150} height={150}
+        // className="w-32 h-32 object-contain p-2 bg-blue-50 rounded-full"
+      />
+    {/* </div> */}
+    <div className="text-center sm:text-left flex-1">
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
         We Assure You up to <span className="text-blue-600">5X Return</span>
       </h3>
-      <p className="text-sm text-gray-600 mt-1">
-        If you earn less than 5 Lakh in 3 year, we‘ll refund up to 5X your initial amount
+      <p className="text-sm text-gray-600 mt-2">
+        If you earn less than 5 Lakh in 3 year, we'll refund up to 5X your initial amount
       </p>
-      <p className="mt-3 font-semibold text-gray-700">
+      <p className="mt-4 font-semibold text-gray-800">
         Your Extra Benefits:{" "}
-        <span className="font-normal">
-          You’ve received ₹3,000 as your fixed monthly earning bonus for purchasing the package.
+        <span className="font-normal text-gray-700">
+          You've received ₹3,000 as your fixed monthly earning bonus for purchasing the package.
         </span>
       </p>
-      <p className="text-blue-600 text-sm mt-2">
+      <p className="text-blue-600 text-sm mt-3 flex items-center justify-center sm:justify-start">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
         Safe, secure, and assured returns on your investment.
       </p>
     </div>
   </div>
 
   {/* Fee Breakdown */}
-  <div className="mt-6 border-t pt-4 space-y-2 text-sm text-gray-700">
+  <div className="mt-8 border-t border-gray-200 pt-6 space-y-3 text-sm text-gray-700">
     <div className="flex justify-between">
-      <span>Franchise Fees</span>
+      <span className="font-medium">Franchise Fees</span>
       <span>
-        <s>₹50,000</s>{" "}
-        <span className="text-green-600">20% ₹10,000</span>
+        <s className="text-gray-500">₹50,000</s>{" "}
+        <span className="text-green-600 font-semibold ml-2">20% ₹10,000</span>
       </span>
     </div>
     <div className="flex justify-between">
-      <span>Franchise Deposit (Refundable)</span>
-      <span>₹1,00,000</span>
+      <span className="font-medium">Franchise Deposit (Refundable)</span>
+      <span className="font-semibold">₹1,00,000</span>
     </div>
-    <div className="flex justify-between font-semibold text-blue-700">
-      <span>Growth Total</span>
-      <span>₹1,10,000</span>
+    <div className="flex justify-between font-bold text-blue-800 pt-2 border-t border-gray-100">
+      <span className="text-lg">Growth Total</span>
+      <span className="text-lg">₹1,10,000</span>
     </div>
   </div>
 
   {/* Payment Info */}
-  <div className="mt-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-    <div className="text-sm text-center sm:text-left">
-      <p>
-        Paid Amount: <span className="font-semibold">₹55,000</span>
-      </p>
-      <p>
-        Remaining Amount: <span className="font-semibold">₹55,000</span>
-      </p>
+  <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div className="flex-1 text-center sm:text-left">
+      <p className="text-xs text-gray-500">Pay using UPI, Card, Net Banking</p>
     </div>
-    <button className="w-full sm:w-auto bg-blue-600 text-white px-5 py-2 rounded-lg font-medium shadow hover:bg-blue-700">
+    <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200 hover:from-blue-700 hover:to-blue-900">
       Activate Now
     </button>
+  </div>
+  
+  {/* Assurance line below button */}
+  <div className="mt-4 text-right">
+    <p className="text-sm font-semibold text-blue-700 inline-flex items-center bg-blue-50 px-4 py-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+      We Assure You up to 5X Return
+    </p>
   </div>
 </div>
 

@@ -15,11 +15,11 @@ export default function Home() {
     <div>
         <HeroSection />
         <AboutSection />
-        <KeyFeatures />
+        <ServicesPage />
         <HowItWorks />
         <DownloadApp />
-        <ServicesPage />
         <PartnerDiagram />
+        <KeyFeatures />
         <ExtraIncome />
         <Testimonials />
         <ContactUs />
