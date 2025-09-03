@@ -7,44 +7,44 @@ const benefitsData = [
   {
     heading: "Reliable Support",
     description:
-      "Receive assistance anytime from our committed support team, ensuring quick solutions and a seamless experience.",
-    imageUrl: "/GP.png",
+       "Receive assistance anytime from our committed support team, ensuring quick solutions and a seamless experience.",
+    imageUrl: "/relaiblesupport.png",
   },
   {
     heading: "Boost Sales Effortlessly",
     description:
       "Receive daily reward points for continuous value, ensuring ongoing benefits and greater savings over time.",
-    imageUrl: "/images/benefit2.png",
+    imageUrl: "/boostsales.png",
   },
   {
     heading: "Evergreen Opportunities",
     description:
       "Step into the thriving financial and banking sector for enduring success, while building a stable and rewarding career for the future.",
-    imageUrl: "/images/benefit3.png",
+    imageUrl: "/evergreenopportunities.png",
   },
   {
     heading: "Manage on Mobile",
     description:
       "Be part of the expanding financial and banking industry for long-term success, while unlocking endless growth opportunities and career advancements.",
-    imageUrl: "/images/benefit3.png",
+    imageUrl: "/mobile.png",
   },
   {
     heading: "Nationwide Operations",
     description:
       "Grow your business across India effortlessly, anytime and from anywhere, while reaching more customers and unlocking new opportunities.",
-    imageUrl: "/images/benefit4.png",
+    imageUrl: "/nationwide.png",
   },
   {
     heading: "Guaranteed Rewards",
     description:
       "Collect daily reward points for continuous value, ensuring consistent benefits and greater savings over time with ease.",
-    imageUrl: "/images/benefit5.png",
+    imageUrl: "/graducation award.png",
   },
   {
     heading: "Passive Income",
     description:
       "Get earn effortlessly with steady and reliable income, giving you financial stability and peace of mind while enjoying the freedom to focus on what truly matters.",
-    imageUrl: "/images/benefit6.png",
+    imageUrl: "/passiveicon.png",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function Benefits() {
 
       {/* Benefits Grid with Scroll Animation */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-6 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        className="relative z-10 max-w-7xl mx-auto px-6 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -98,9 +98,9 @@ export default function Benefits() {
                   <Image
                     src={benefit.imageUrl}
                     alt={benefit.heading}
-                    width={70}
-                    height={70}
-                    className="object-contain "
+                    width={60}
+                    height={60}
+                    className="object-cover"
                     // style={{borderRadius:"50%"}}
                   />
                 </div>
