@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonial";
 import ContactUs from "@/components/ContactUs";
 import WhatsAppButton from "@/components/WhatsappButton";
 import ExtraIncome from "@/components/ExtraIncome";
+import BlogSection from "@/components/BlogSection";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <KeyFeatures />
         <ExtraIncome />
         <Testimonials />
+        <BlogSection />
         <ContactUs />
         <WhatsAppButton />
     </div>

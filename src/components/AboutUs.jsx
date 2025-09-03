@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaGooglePlay, FaApple } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import OurMission from "./OurMission";
 
 export default function AboutSection() {
   // Counter Animation for Stats
@@ -95,6 +96,8 @@ export default function AboutSection() {
           </motion.div>
         </div>
       </section>
+
+      <OurMission />
 
       {/* STATS SECTION */}
       <section className="bg-white py-16 px-6 lg:px-16">

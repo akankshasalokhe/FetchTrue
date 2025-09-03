@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Growth Partner", href: "#growth-partner" },
   { label: "Features", href: "#features" },
-  { label: "Blog", href: "#blog" }
+  // { label: "Blog", href: "#blog" }
   // { label: "Franchise", href: "#franchise" },
   // { label: "Contact", href: "#contact" },
 ];
@@ -35,7 +35,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="#home" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
               FetchTrue
             </span>
@@ -52,6 +52,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link href="/Blog" className="text-base font-medium text-black hover:text-blue-600 transition">
+              Blog
+            </Link>
             <Link
               href="#contact"
               className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
