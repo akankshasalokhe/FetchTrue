@@ -136,9 +136,10 @@ const StepCard = ({ step, index, activeStep }) => {
                 animate={isActive ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 1 }}
               >
-                <span className="text-lg font-bold text-gray-800">Premium Plan</span>
+                <img src="/package.jpeg" alt="Premium Plan" className="w-full h-full object-cover rounded-lg object-cover" />
+                {/* <span className="text-lg font-bold text-gray-800">Premium Plan</span>
                 <span className="text-2xl font-bold text-blue-600 mt-2">₹999/month</span>
-                <span className="text-sm text-gray-600 mt-2">Unlimited access to all features</span>
+                <span className="text-sm text-gray-600 mt-2">Unlimited access to all features</span> */}
               </motion.div>
 
               <motion.button
