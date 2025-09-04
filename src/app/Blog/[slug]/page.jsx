@@ -86,7 +86,7 @@ export default function BlogPost() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Post Not Found</h1>
           <p className="text-gray-600 mb-6">The blog post you're looking for doesn't exist.</p>
-          <Link href="/Blog" className="text-blue-600 hover:text-blue-800 font-medium">
+          <Link href="/blog" className="text-blue-600 hover:text-blue-800 font-medium">
             ← Back to Blog
           </Link>
         </div>
@@ -99,7 +99,7 @@ export default function BlogPost() {
       <article className="container mx-auto px-4 py-12 max-w-3xl">
         {/* Back Button */}
         <Link 
-          href="/Blog" 
+          href="/blog" 
           className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 font-medium"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

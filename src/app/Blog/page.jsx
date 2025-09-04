@@ -85,57 +85,63 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mt-10 mx-auto px-4 sm:px-6 py-8 md:py-12">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Blog</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Our Blog</h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Stay updated with the latest insights, trends, and news in technology, business, and design
           </p>
         </div>
         
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        {/* Category Filters - Horizontal scroll for mobile */}
+        <div className="mb-8 md:mb-12">
+          <div className="flex overflow-x-auto pb-2 md:pb-0 md:flex-wrap justify-start md:justify-center gap-2 md:gap-3 hide-scrollbar">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`flex-shrink-0 px-4 py-2 rounded-full font-medium transition-colors ${
+                  selectedCategory === category
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-sm'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
         
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-30">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:mx-20 gap-6 md:gap-8 ">
           {filteredPosts.map(post => (
-            <div key={post.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="h-48 bg-gray-200 overflow-hidden">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover"
-                />
+            <div key={post.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 overflow-hidden">
+                <div className="w-full h-48 md:h-52 relative">
+                  <div className="absolute inset-0 bg-gray-300 animate-pulse"></div>
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <div className="flex justify-between items-center mb-3">
                   <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">
                     {post.category}
                   </span>
                   <span className="text-gray-500 text-sm">{post.readTime}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{post.title}</h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 line-clamp-2">{post.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm md:text-base line-clamp-2">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-500 text-sm">{post.date}</span>
                   <Link 
-                    href={`/Blog/${post.slug}`} 
-                    className="text-blue-600 font-medium hover:text-blue-800 transition-colors"
+                    href={`/blog/${post.slug}`} 
+                    className="text-blue-600 font-medium hover:text-blue-800 transition-colors text-sm md:text-base"
                   >
                     Read more →
                   </Link>
@@ -158,6 +164,28 @@ export default function BlogPage() {
           </div>
         )}
       </div>
+
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        @media (max-width: 640px) {
+          .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
