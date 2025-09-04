@@ -249,7 +249,7 @@ const ServicesSection = () => {
               transition={{ duration: 0.5 }}
               className="w-1/2"
             >
-              <h2 className="text-3xl font-bold mb-4">{activeService?.title}</h2>
+              <h2 className="text-3xl text-blue-600 font-bold mb-4">{activeService?.title}</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
                 {activeService?.description}
               </p>
@@ -266,7 +266,7 @@ const ServicesSection = () => {
                 transition={{ duration: 0.5 }}
                 className={styles.serviceCard}
               >
-                <h3>{service.title}</h3>
+                <h3 className="">{service.title}</h3>
                 <div className="relative mb-3">
                   <img
                     src={service.mainImage}

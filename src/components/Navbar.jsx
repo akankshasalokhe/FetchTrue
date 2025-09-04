@@ -52,7 +52,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/Blog" className="text-base font-medium text-black hover:text-blue-600 transition">
+            <Link href="/blog" className="text-base font-medium text-black hover:text-blue-600 transition">
               Blog
             </Link>
             <Link
@@ -93,8 +93,12 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+             <Link href="/blog" className="rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">
+              Blog
+            </Link>
             <Link
-              href="#demo"
+              href="#contact"
               onClick={() => setMobileOpen(false)}
               className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-base font-semibold text-white hover:bg-blue-700"
             >
