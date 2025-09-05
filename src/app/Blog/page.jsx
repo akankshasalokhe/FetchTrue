@@ -82,6 +82,9 @@ export default function BlogPage() {
 
   return (
     <section className="py-16 px-6 lg:px-20 bg-gray-50 min-h-screen">
+      <div className='mb-10 mt-10 text-blue-600 ms-20'>
+        <Link href="/">back to home</Link>
+      </div>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
