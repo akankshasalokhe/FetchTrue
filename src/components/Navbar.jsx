@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Growth Partner", href: "#growth-partner" },
   { label: "Features", href: "#features" },
-  // { label: "Blog", href: "#blog" }
+  { label: "Blog", href: "#blog" }
   // { label: "Franchise", href: "#franchise" },
   // { label: "Contact", href: "#contact" },
 ];
@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="md:hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -52,9 +52,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/blog" className="text-base font-medium text-black hover:text-blue-600 transition">
+            {/* <Link href="/blog" className="text-base font-medium text-black hover:text-blue-600 transition">
               Blog
-            </Link>
+            </Link> */}
             <Link
               href="#contact"
               className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
@@ -65,7 +65,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden inline-flex items-center justify-center rounded-lg p-2"
+            className="lg:hidden inline-flex items-center justify-center rounded-lg p-2"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -79,7 +79,7 @@ export default function Navbar() {
         initial={{ height: 0 }}
         animate={{ height: mobileOpen ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden"
+        className="lg:hidden overflow-hidden"
       >
         <div className="mx-4 mt-2 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg">
           <div className="flex flex-col gap-3">
@@ -94,9 +94,9 @@ export default function Navbar() {
               </Link>
             ))}
 
-             <Link href="/blog" className="rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">
+             {/* <Link href="/blog" className="rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">
               Blog
-            </Link>
+            </Link> */}
             <Link
               href="#contact"
               onClick={() => setMobileOpen(false)}
