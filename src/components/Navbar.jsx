@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="md:hidden lg:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -65,7 +65,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden inline-flex items-center justify-center rounded-lg p-2"
+            className="md:hidden inline-flex items-center justify-center rounded-lg p-2"
             aria-label="Toggle menu"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -79,7 +79,7 @@ export default function Navbar() {
         initial={{ height: 0 }}
         animate={{ height: mobileOpen ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
-        className="lg:hidden overflow-hidden"
+        className="md:hidden overflow-hidden"
       >
         <div className="mx-4 mt-2 rounded-2xl border border-gray-200 bg-white p-4 shadow-lg">
           <div className="flex flex-col gap-3">
