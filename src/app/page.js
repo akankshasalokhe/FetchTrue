@@ -22,8 +22,8 @@ export default function Home() {
         <PartnerDiagram />
         <KeyFeatures />
         <ExtraIncome />
-        <Testimonials />
         <BlogSection />
+        <Testimonials />
         <ContactUs />
         <WhatsAppButton />
     </div>

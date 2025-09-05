@@ -27,7 +27,7 @@ export default function WhatsAppButton() {
     <div
       onClick={handleClick}
       title="Chat on WhatsApp"
-      className={`fixed bottom-6 right-10 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110 ${
+      className={`fixed z-50 bottom-6 right-10 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110 ${
         scrolled ? "opacity-100" : "opacity-80"
       }`}
     >
