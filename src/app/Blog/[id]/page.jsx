@@ -113,12 +113,12 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 ">
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Main Content */}
         <article className="w-full lg:w-2/3">
           {/* Breadcrumb */}
-          <nav className="text-sm text-gray-500 mb-6">
+          <nav className="text-sm text-gray-500 mb-6 mt-8">
             <ol className="list-none p-0 inline-flex">
               <li className="flex items-center">
                 <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
