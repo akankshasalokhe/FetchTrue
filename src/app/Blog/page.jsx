@@ -197,7 +197,7 @@ export default function BlogPage() {
                         <div className="flex items-center">
                           <div className="h-7 w-7 md:h-8 md:w-8 rounded-full bg-gray-200 mr-2 overflow-hidden">
                             {blog.author.image ? (
-                              <Image 
+                              <img 
                                 src={blog.author.image} 
                                 alt={blog.author.name} 
                                 width={32}
