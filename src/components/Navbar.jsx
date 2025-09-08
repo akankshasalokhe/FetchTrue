@@ -29,14 +29,14 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled ? "backdrop-blur-md bg-white/90 shadow-sm" : "bg-transparent"
+        scrolled ? "backdrop-blur-md bg-gradient-to-r from-[#003f7f] via-[#00509D] to-[#007bbd] shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
+            <span className="text-xl sm:text-2xl font-bold tracking-tight text-white">
               FetchTrue
             </span>
           </Link>
@@ -47,7 +47,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium text-black hover:text-blue-600 transition"
+                className="text-base font-medium text-white hover:text-blue-600 transition"
               >
                 {link.label}
               </Link>
