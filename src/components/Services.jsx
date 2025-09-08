@@ -257,36 +257,57 @@ const ServicesSection = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-6 lg:hidden mt-4">
-            {services.map((service) => (
-              <motion.div
-                key={service._id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className={styles.serviceCard}
-              >
-                <h3 className="">{service.title}</h3>
-                <div className="relative mb-3">
-                  <img
-                    src={service.mainImage}
-                    alt={service.title}
-                    className="w-full h-56 object-cover rounded-lg shadow-sm"
-                  />
-                  <button
-                    onClick={() => {
-                      setActiveService(service);
-                      setShowVideo(true);
-                    }}
-                    className={`${styles.playButton} absolute bottom-3 left-1/2 transform -translate-x-1/2`}
-                  >
-                    ▶ Play Video
-                  </button>
-                </div>
-                <p>{service.description}</p>
-              </motion.div>
-            ))}
+  {services.map((service) => (
+    <motion.div
+      key={service._id}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className={styles.serviceCard}
+    >
+      <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+
+      <div className="relative mb-3">
+        {activeService?._id === service._id && showVideo ? (
+          // ✅ Render video when play clicked
+          <div className="relative w-full aspect-video">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+              src={`https://www.youtube.com/embed/${service.videoId}?autoplay=1&rel=0&modestbranding=1`}
+              title={service.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
           </div>
+        ) : (
+          // ✅ Show image + play button
+          <>
+            <img
+              src={service.mainImage}
+              alt={service.title}
+              className="w-full h-56 object-cover rounded-lg shadow-sm"
+            />
+            <button
+              onClick={() => {
+                setActiveService(service);
+                setShowVideo(true);
+              }}
+              className="absolute bottom-3 left-1/2 transform -translate-x-1/2 
+                         bg-blue-600 text-white px-6 py-3 rounded-full text-lg shadow-lg 
+                         hover:bg-blue-700 transition"
+            >
+              ▶ Play Video
+            </button>
+          </>
+        )}
+      </div>
+
+      <p className="text-gray-600">{service.description}</p>
+    </motion.div>
+  ))}
+</div>
+
         </>
       )}
     </div>

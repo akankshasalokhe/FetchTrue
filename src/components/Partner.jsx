@@ -346,7 +346,7 @@ export default function PartnerDiagram() {
 
       </div>
 
-      <AssuranceCard />
+      {/* <AssuranceCard /> */}
     </section>
   );
 }
