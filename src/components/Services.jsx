@@ -201,7 +201,7 @@ const ServicesSection = () => {
                   <img
                     src={activeService?.mainImage}
                     alt={activeService?.title}
-                    className="w-full h-96 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300 lg:h-80"
+                    className="w-full h-96 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300 lg:h-80 text-blue-400"
                     loading="lazy"
                   />
                 
@@ -272,20 +272,21 @@ const ServicesSection = () => {
                         className="w-full h-56 object-cover rounded-lg shadow-sm"
                         loading="lazy"
                       />
-                      <div className="flex justify-center mt-3">
-                        <button
-                          onClick={() => handlePlayVideo(service)}
-                          className="bg-blue-600 text-white rounded-full p-1 text-lg shadow-lg hover:bg-blue-700 transition flex items-center"
-                          aria-label="Play video"
-                        >
-                          <span className="mr-1">▶</span> Play Video
-                        </button>
-                      </div>
+                     
                     </>
                   )}
                 </div>
 
                 <p className="text-gray-600">{service.description}</p>
+                 <div className="flex justify-start mt-3">
+                        <button
+                          onClick={() => handlePlayVideo(service)}
+                          className="bg-blue-600 text-white rounded-full p-1 text-sm shadow-lg hover:bg-blue-700 transition flex items-center"
+                          aria-label="Play video"
+                        >
+                          <span className="mr-1">▶</span> Play Video
+                        </button>
+                      </div>
               </motion.article>
             ))}
           </div>
