@@ -67,24 +67,25 @@ const StepCard = ({ step, index, activeStep }) => {
                 Welcome to FetchTrue
               </motion.h3>
 
+              {/* Updated Input Field with Typewriter Effect */}
               <motion.div
-                className="border rounded-xl p-3 mb-4 text-gray-500 text-sm bg-white shadow-sm"
+                className="relative border rounded-xl p-3 mb-4 text-gray-500 text-sm bg-white shadow-sm mx-4 h-12 flex items-center"
                 initial={{ y: 20, opacity: 0 }}
                 animate={isActive ? { y: 0, opacity: 1 } : {}}
                 transition={{ delay: 1 }}
               >
-                Enter Mobile Number
-              </motion.div>
-
-              {/* ✅ Typewriter effect */}
-              <motion.div
-                className="h-12 border rounded-lg flex items-center justify-center text-sm text-gray-700 bg-white mx-4 mb-6 shadow-sm font-mono"
-                initial={{ width: "0%" }}
-                animate={isActive ? { width: "80%" } : {}}
-                transition={{ duration: 0.9, delay: 1.5 }}
-              >
-                {typedText}
-                <span className="animate-pulse">|</span>
+                <span className="text-gray-400">Enter Mobile Number</span>
+                <motion.div 
+                  className="absolute inset-0 flex items-center px-3 rounded-xl bg-white border border-blue-300 shadow-md"
+                  initial={{ width: "0%" }}
+                  animate={isActive ? { width: "100%" } : {}}
+                  transition={{ duration: 0.9, delay: 1.5 }}
+                >
+                  <span className="font-mono text-gray-700">
+                    {typedText}
+                    <span className="animate-pulse">|</span>
+                  </span>
+                </motion.div>
               </motion.div>
 
               <motion.button
@@ -99,7 +100,6 @@ const StepCard = ({ step, index, activeStep }) => {
               </motion.button>
             </motion.div>
           )}
-
 
           {index === 1 && (
             <motion.div
@@ -136,10 +136,7 @@ const StepCard = ({ step, index, activeStep }) => {
                 animate={isActive ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 1 }}
               >
-                <img src="/package.jpeg" alt="Premium Plan" className="w-full h-full object-cover rounded-lg object-cover" />
-                {/* <span className="text-lg font-bold text-gray-800">Premium Plan</span>
-                <span className="text-2xl font-bold text-blue-600 mt-2">₹999/month</span>
-                <span className="text-sm text-gray-600 mt-2">Unlimited access to all features</span> */}
+                <img src="/pkg.jpeg" alt="Premium Plan" className="w-full h-full object-cover rounded-lg object-cover" />
               </motion.div>
 
               <motion.button

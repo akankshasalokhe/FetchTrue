@@ -172,36 +172,6 @@ export default function DownloadBanner() {
                 />
               ))}
             </div>
-            
-            {/* Animated Stats */}
-            {/* <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="grid grid-cols-3 gap-3 md:gap-4 pt-3 md:pt-4"
-            >
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="text-center p-3 md:p-4 bg-gray-50 rounded-lg shadow-sm"
-              >
-                <div className="text-xl md:text-2xl font-bold text-[#00509D]">{stats.businesses}+</div>
-                <div className="text-xs md:text-sm text-gray-600">Businesses</div>
-              </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="text-center p-3 md:p-4 bg-gray-50 rounded-lg shadow-sm"
-              >
-                <div className="text-xl md:text-2xl font-bold text-[#00509D]">{stats.franchises}</div>
-                <div className="text-xs md:text-sm text-gray-600">Franchises</div>
-              </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="text-center p-3 md:p-4 bg-gray-50 rounded-lg shadow-sm"
-              >
-                <div className="text-xl md:text-2xl font-bold text-[#00509D]">{stats.growth}%</div>
-                <div className="text-xs md:text-sm text-gray-600">Growth</div>
-              </motion.div>
-            </motion.div> */}
           </motion.div>
           
           {/* Right Column - Download CTA */}
@@ -258,8 +228,8 @@ export default function DownloadBanner() {
               </motion.p>
             </div>
             
-            {/* Download Buttons */}
-            <div className="space-y-3 md:space-y-4 mb-6 md:mb-8 relative z-10">
+            {/* Download Buttons - Updated with smaller size and single row layout */}
+            <div className="flex flex-row gap-3 md:gap-4 mb-6 md:mb-8 relative z-10 justify-center">
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -269,12 +239,12 @@ export default function DownloadBanner() {
                   boxShadow: "0 10px 25px -10px rgba(0, 80, 157, 0.5)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full flex items-center justify-center gap-2 md:gap-3 bg-[#00509D] text-white py-3 md:py-4 rounded-lg md:rounded-xl font-semibold shadow-md md:shadow-lg"
+                className="flex-1 flex items-center justify-center gap-2 bg-[#00509D] text-white py-2 md:py-3 rounded-lg font-semibold shadow-md max-w-[180px]"
               >
-                <FaGooglePlay className="text-lg md:text-xl" />
+                <FaGooglePlay className="text-base md:text-lg" />
                 <div className="text-left">
-                  <div className="text-xs">Get it on</div>
-                  <div className="text-sm md:text-base">Google Play</div>
+                  <div className="text-[10px] md:text-xs">Get it on</div>
+                  <div className="text-xs md:text-sm">Google Play</div>
                 </div>
               </motion.button>
               <motion.button
@@ -286,46 +256,29 @@ export default function DownloadBanner() {
                   boxShadow: "0 10px 25px -10px rgba(0, 0, 0, 0.3)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full flex items-center justify-center gap-2 md:gap-3 bg-gray-900 text-white py-3 md:py-4 rounded-lg md:rounded-xl font-semibold shadow-md md:shadow-lg"
+                className="flex-1 flex items-center justify-center gap-2 bg-gray-900 text-white py-2 md:py-3 rounded-lg font-semibold shadow-md max-w-[180px]"
               >
-                <FaApple className="text-lg md:text-xl" />
+                <FaApple className="text-base md:text-lg" />
                 <div className="text-left">
-                  <div className="text-xs">Download on the</div>
-                  <div className="text-sm md:text-base">App Store</div>
+                  <div className="text-[10px] md:text-xs">Download on the</div>
+                  <div className="text-xs md:text-sm">App Store</div>
                 </div>
               </motion.button>
-              
-              
             </div>
             
-            {/* QR Code Alternative */}
+            {/* QR Code Section */}
             {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3 }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-white p-3 md:p-4 rounded-lg shadow flex items-center gap-3 md:gap-4 relative z-10"
+              className="text-center"
             >
-              <motion.div
-                whileHover={{ rotate: 5 }}
-                className="bg-gray-200 p-1 md:p-2 rounded"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white">
-                  <div className="grid grid-cols-3 gap-0.5 md:gap-1">
-                    {[...Array(9)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        whileHover={{ scale: 1.2 }}
-                        className="w-3 h-3 md:w-4 md:h-4 bg-black rounded-sm"
-                      />
-                    ))}
-                  </div>
+              <div className="inline-block p-2 bg-white rounded-lg shadow-md mb-2">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-200 rounded flex items-center justify-center">
+                  <FaQrcode className="text-2xl md:text-3xl text-gray-400" />
                 </div>
-              </motion.div>
-              <div>
-                <h4 className="font-semibold text-gray-800 text-sm md:text-base">Scan to Download</h4>
-                <p className="text-xs md:text-sm text-gray-600">Use your phone's camera to scan the QR code</p>
               </div>
+              <p className="text-xs md:text-sm text-gray-600">Scan to download</p>
             </motion.div> */}
           </motion.div>
         </div>
