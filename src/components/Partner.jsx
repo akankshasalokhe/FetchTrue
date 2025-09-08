@@ -22,7 +22,6 @@ export default function PartnerDiagram() {
   const [activeTier, setActiveTier] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [expandedAccordions, setExpandedAccordions] = useState({});
-  const [assuranceData, setAssuranceData] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -36,20 +35,7 @@ export default function PartnerDiagram() {
     }));
   };
 
-  // useEffect(() =>{
-  //   const fetchAssuranceData = async () => {
-  //     try {
-  //       const res = await fetch("https://api.fetchtrue.com/api/packages");
-  //       const data = await res.json();
-  //       if (data.success) {
-  //         setAssuranceData(data.data[1]);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching assurance data:", error);
-  //     }
-  //   };
-  //   fetchAssuranceData();
-  // }, []);
+ 
 
   const partners = [
     {
