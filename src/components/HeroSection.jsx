@@ -75,7 +75,7 @@ export default function VideoHeroPage() {
           }}
         >
           {/* Responsive Heading */}
-          <h1 className=" text-2xl sm:text-xl md:text-4xl lg:text-6xl font-bold mb-4 leading-snug">
+          <h1 className=" text-2xl sm:text-xl mt-8 md:text-4xl lg:text-6xl font-bold mb-4 leading-snug">
             Grow Your Business with Our B2B & Franchise Solutions
           </h1>
 
