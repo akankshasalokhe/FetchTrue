@@ -26,12 +26,12 @@ export default function VideoHeroPage() {
         />
       </Head>
 
-      <section className="relative w-full sm:h-[80vh] md:h-[85vh] lg:h-screen flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative w-full h-[50vh] md:h-[85vh]  lg:h-screen flex items-center justify-center text-center text-white overflow-hidden">
         {/* Background Video */}
-        <div className="absolute top-0 left-0 w-full h-full sm:h-[80vh] md:h-[85vh] lg:h-screen overflow-hidden ">
+        <div className="flex w-full h-full absolute top-0 left-0 z-0">
           {!videoError ? (
             <video
-              className="w-full h-full object-cover"
+              className="w-full h-[50vh] md:h-[85vh] lg:h-screen object-cover"
               autoPlay
               loop
               muted
@@ -67,7 +67,7 @@ export default function VideoHeroPage() {
 
         {/* Content */}
         <div
-          className="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto text-center"
+          className="relative sm:top-20 z-10 px-4 sm:px-6 max-w-3xl mx-auto text-center"
           style={{
             opacity: isLoading ? 0 : 1,
             transform: isLoading ? "translateY(40px)" : "translateY(0)",
@@ -75,7 +75,7 @@ export default function VideoHeroPage() {
           }}
         >
           {/* Responsive Heading */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-snug">
+          <h1 className=" text-2xl sm:text-xl md:text-4xl lg:text-6xl font-bold mb-4 leading-snug">
             Grow Your Business with Our B2B & Franchise Solutions
           </h1>
 
@@ -89,7 +89,7 @@ export default function VideoHeroPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="#about"
-              className="bg-[#00509D] hover:bg-[#003F7D] text-white px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
+              className="bg-[#00509D] hover:bg-[#003F7D] text-white px-5 sm:px-6 md:px-8  py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Started
             </Link>
