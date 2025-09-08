@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./globals.css";
-import './util/suppressHydrationWarnings'
+// import './util/suppressHydrationWarnings'
 
 export const metadata = {
   title: "Fetch True",
