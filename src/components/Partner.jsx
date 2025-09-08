@@ -16,11 +16,13 @@ import {
   FaBookOpen,
   FaLaptop,
 } from "react-icons/fa";
+import AssuranceCard from "./AssuranceCard";
 
 export default function PartnerDiagram() {
   const [activeTier, setActiveTier] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [expandedAccordions, setExpandedAccordions] = useState({});
+  const [assuranceData, setAssuranceData] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -33,6 +35,21 @@ export default function PartnerDiagram() {
       [tierId]: prev[tierId] === accordionKey ? null : accordionKey,
     }));
   };
+
+  // useEffect(() =>{
+  //   const fetchAssuranceData = async () => {
+  //     try {
+  //       const res = await fetch("https://api.fetchtrue.com/api/packages");
+  //       const data = await res.json();
+  //       if (data.success) {
+  //         setAssuranceData(data.data[1]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching assurance data:", error);
+  //     }
+  //   };
+  //   fetchAssuranceData();
+  // }, []);
 
   const partners = [
     {
@@ -256,8 +273,8 @@ export default function PartnerDiagram() {
         </div>
 
        {/* Assurance Card at Bottom */}
-<div className="mt-12 bg-white shadow-xl rounded-2xl border border-gray-100 p-6 sm:p-8 max-w-4xl mx-auto">
-  {/* Header Section */}
+       {/* Assurance Card at Bottom */}
+{/* <div className="mt-12 bg-white shadow-xl rounded-2xl border border-gray-100 p-6 sm:p-8 max-w-4xl mx-auto">
   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
     <img
       src="/icon (3).png"
@@ -276,7 +293,7 @@ export default function PartnerDiagram() {
       <p className="mt-4 font-semibold text-gray-800 text-sm sm:text-base">
         Your Extra Benefits:{" "}
         <span className="font-normal text-gray-700">
-          You've received ₹3,000 as your fixed monthly earning bonus for purchasing the package.
+          You've received ₹ {assuranceData?.monthlyEarnings?.toLocaleString() || 3000} as your fixed monthly earning bonus for purchasing the package.
         </span>
       </p>
       <p className="text-blue-600 text-xs sm:text-sm mt-3 flex items-center justify-center sm:justify-start">
@@ -288,26 +305,25 @@ export default function PartnerDiagram() {
     </div>
   </div>
 
-  {/* Fee Breakdown */}
   <div className="mt-8 border-t border-gray-200 pt-6 space-y-3 text-xs sm:text-sm text-gray-700">
     <div className="flex justify-between">
       <span className="font-medium">Franchise Fees</span>
       <span>
-        <s className="text-gray-500">₹50,000</s>{" "}
-        <span className="text-green-600 font-semibold ml-2">20% ₹10,000</span>
+        <s className="text-gray-500"> ₹{assuranceData?.price?.toLocaleString()}</s>{" "}
+        <span className="text-green-600 font-semibold ml-2">₹{assuranceData?.discount?.toLocaleString()} 
+          ₹{assuranceData?.discountedPrice?.toLocaleString()}</span>
       </span>
     </div>
     <div className="flex justify-between">
       <span className="font-medium">Franchise Deposit (Refundable)</span>
-      <span className="font-semibold">₹1,00,000</span>
+      <span className="font-semibold">₹{assuranceData?.deposit?.toLocaleString()}</span>
     </div>
     <div className="flex justify-between font-bold text-blue-800 pt-2 border-t border-gray-100">
       <span className="text-base sm:text-lg">Growth Total</span>
-      <span className="text-base sm:text-lg">₹1,10,000</span>
+      <span className="text-base sm:text-lg">₹{assuranceData?.grandtotal?.toLocaleString()}</span>
     </div>
   </div>
 
-  {/* Payment Info */}
   <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
     <div className="flex-1 text-center sm:text-left">
       <p className="text-xs text-gray-500">Pay using UPI, Card, Net Banking</p>
@@ -317,7 +333,6 @@ export default function PartnerDiagram() {
     </button>
   </div>
   
-  {/* Assurance line below button */}
   <div className="mt-4 text-center sm:text-right">
     <p className="text-xs sm:text-sm font-semibold text-blue-700 inline-flex items-center bg-blue-50 px-3 sm:px-4 py-2 rounded-full">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 sm:h-5 w-4 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -326,10 +341,12 @@ export default function PartnerDiagram() {
       We Assure You up to 5X Return
     </p>
   </div>
-</div>
+</div> */}
 
 
       </div>
+
+      <AssuranceCard />
     </section>
   );
 }
