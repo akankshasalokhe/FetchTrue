@@ -23,7 +23,7 @@ export default function AssuranceCard() {
     <div className="mt-12 bg-white shadow-xl rounded-2xl border border-gray-100 p-6 sm:p-8 max-w-4xl mx-auto">
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
         <img
-          src="/icon (3).png"
+          src="/Icon (3).png"
           alt="Assurance"
           width={120}
           height={120}
