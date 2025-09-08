@@ -26,7 +26,7 @@ const BlogSection = () => {
   const displayedBlogs = blogs.slice(0, 3);
 
   return (
-    <section id='blog' className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <section id='Blog' className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
