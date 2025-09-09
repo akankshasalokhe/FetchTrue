@@ -81,18 +81,40 @@ export default function BlogPage() {
   }
 
   return (
-    <section className="py-16 px-6 lg:px-20 bg-gray-50 min-h-screen">
-      <div className='mb-10 mt-10 text-blue-600 ms-20 font-medium mx-4'>
-        <Link href="/">→ back to home</Link>
-      </div>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Explore insights, tips, and the latest trends across technology, business, and design.
-          </p>
+    <section className="bg-gray-50 min-h-screen">
+      
+      {/* Banner Section */}
+      <div className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 md:py-24 px-6 lg:px-20">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-black opacity-20"></div>
+          <div className="absolute top-0 right-0 -mr-40 mt-20 bg-blue-500 opacity-30 rounded-full w-64 h-64 md:w-80 md:h-80 transform rotate-45"></div>
+          <div className="absolute bottom-0 left-0 -ml-40 mb-20 bg-indigo-500 opacity-30 rounded-full w-64 h-64 md:w-80 md:h-80 transform -rotate-45"></div>
         </div>
+        
+        <div className="relative max-w-7xl mx-auto">
+          <div className='mb-6 md:mb-10'>
+            <Link 
+              href="/" 
+              className="inline-flex items-center text-blue-100 hover:text-white transition-colors font-medium"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+              Back to home
+            </Link>
+          </div>
+          
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Our Blog</h1>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto">
+              Explore insights, tips, and the latest trends across technology, business, and design.
+            </p>
+          </div>
+        </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="py-16 px-6 lg:px-20 max-w-7xl mx-auto">
         {/* Tabs Navigation */}
         <div className="flex flex-wrap justify-center mb-12 gap-2">
           {categories.map(category => (
@@ -111,6 +133,7 @@ export default function BlogPage() {
           ))}
         </div>
 
+        {/* Blog Grid */}
         {filteredBlogs.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-xl font-medium text-gray-700">No blogs found in this category</h3>
