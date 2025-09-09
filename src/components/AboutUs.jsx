@@ -167,7 +167,7 @@ export default function AboutSection() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="w-[320px] md:w-[420px] lg:w-[480px] relative"
             >
-              <Image
+              <img
                 src="/Fetch True Modules mockup (2).png" // Replace with your mockup image path
                 alt="App Mockup"
                 width={480}
