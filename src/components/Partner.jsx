@@ -77,7 +77,7 @@ export default function PartnerDiagram() {
         "Earn 5% to 15% revenue share on every successful lead conversion.",
         "Earn ₹5,000 for every franchise you successfully on-board.",
         "Earn ₹3,000 when a franchise you on boarded brings in another franchise.",
-        "Earn an additional 5% to 8% as team revenue bonus.",
+        "Earn an additional 5% to 8% as team revenue bonus and 3 - 6 hours response time for quick issue resolution",
       ],
       monthlyEarning: "₹3,000/month",
       revenue: "Earn 5% to 15% revenue share + 5% to 10% team revenue",
