@@ -65,25 +65,25 @@ const ServicesSection = () => {
         setError(err.message);
         
         // Improved fallback data with working video IDs
-        const fallbackServices = [
-          {
-            _id: "1",
-            title: "Franchise",
-            mainImage: "https://ik.imagekit.io/hzyuadmua/fservices_images/contactform_prEpJmmwK.jpeg",
-            videoLink: "https://www.youtube.com/embed/dRxAN8wLxIk",
-            description: "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
-            videoId: "dRxAN8wLxIk"
-          },
-          {
-            _id: "2",
-            title: "Business",
-            mainImage: "/images/business.jpg",
-            videoLink: "https://www.youtube.com/watch?v=os4ReDyMCpw",
-            description: "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
-            videoId: "os4ReDyMCpw"
-          },
-          // Add more fallback services with valid video IDs...
-        ];
+        // const fallbackServices = [
+        //   {
+        //     _id: "1",
+        //     title: "Franchise",
+        //     mainImage: "https://ik.imagekit.io/hzyuadmua/fservices_images/contactform_prEpJmmwK.jpeg",
+        //     videoLink: "https://www.youtube.com/embed/dRxAN8wLxIk",
+        //     description: "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
+        //     videoId: "dRxAN8wLxIk"
+        //   },
+        //   {
+        //     _id: "2",
+        //     title: "Business",
+        //     mainImage: "/images/business.jpg",
+        //     videoLink: "https://www.youtube.com/watch?v=os4ReDyMCpw",
+        //     description: "Enhance workforce capabilities through tailored training programs designed to foster growth, improve performance, and strengthen skills.",
+        //     videoId: "os4ReDyMCpw"
+        //   },
+        //   // Add more fallback services with valid video IDs...
+        // ];
         setServices(fallbackServices);
         setActiveService(fallbackServices[0]);
       } finally {
