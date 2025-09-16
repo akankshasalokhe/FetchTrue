@@ -87,14 +87,14 @@ export default function VideoHeroPage() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="#about"
               className="bg-[#00509D] hover:bg-[#003F7D] text-white px-5 sm:px-6 md:px-8  py-3 rounded-lg text-sm sm:text-base md:text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105"
             >
               Get Started
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

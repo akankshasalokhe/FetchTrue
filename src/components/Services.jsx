@@ -69,7 +69,7 @@ const ServicesSection = () => {
         //   {
         //     _id: "1",
         //     title: "Franchise",
-        //     mainImage: "https://ik.imagekit.io/hzyuadmua/fservices_images/contactform_prEpJmmwK.jpeg",
+        //     mainImage: "/",
         //     videoLink: "https://www.youtube.com/embed/dRxAN8wLxIk",
         //     description: "Streamline your employee integration process with our efficient onboarding solutions that ensure smooth transitions and faster productivity.",
         //     videoId: "dRxAN8wLxIk"
@@ -84,8 +84,8 @@ const ServicesSection = () => {
         //   },
         //   // Add more fallback services with valid video IDs...
         // ];
-        setServices(fallbackServices);
-        setActiveService(fallbackServices[0]);
+        // setServices(fallbackServices);
+        // setActiveService(fallbackServices[0]);
       } finally {
         setLoading(false);
       }
