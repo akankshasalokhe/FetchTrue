@@ -32,8 +32,8 @@ export default function VideoHeroPage() {
           {!videoError ? (
             <video
               className="w-full h-[50vh] md:h-[85vh] lg:h-screen object-cover"
-              fill
               autoPlay
+              fill
               loop
               muted
               playsInline

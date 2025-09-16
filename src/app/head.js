@@ -8,7 +8,7 @@ export default function Head() {
       <meta property="og:title" content="Fetch True" />
       <meta property="og:description" content="Partner with us for B2B solutions and franchise opportunities." />
       <meta property="og:type" content="website" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.ico"  />
     </>
   );
 }

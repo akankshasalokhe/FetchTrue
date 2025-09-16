@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "About Us", href: "#about" },
@@ -29,7 +30,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled ? "backdrop-blur-md bg-gradient-to-r from-[#003f7f] via-[#00509D] to-[#007bbd] shadow-sm" : "bg-transparent"
+        scrolled ? "bg-white shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,7 +38,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-              FetchTrue
+              <Image
+                src="/Fetch True Logo.png" alt="Fetch True" width={120} height={50}
+              />
             </span>
           </Link>
 
@@ -47,7 +50,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium text-white hover:text-blue-600 transition"
+                className="text-base font-medium text-gray hover:text-blue-600 transition"
               >
                 {link.label}
               </Link>
